@@ -1,0 +1,68 @@
+<nav role="navigation" class="navbar16_menu w-nav-menu" style="position: relative;">
+    <div class="navbar16_menu-wrapper">
+      <div class="navbar16_links-wrapper">
+        <a href="/index.html" class="navbar16_link w-nav-link lang-de">Start</a>
+        <a href="/investment-advisory.html" class="navbar16_link w-nav-link lang-de">Investment Beratung</a>
+        <a href="/full-service-fur-bautrager-und-projektentwickler.html" class="navbar16_link w-nav-link lang-de">Full-Service für Bauträger</a>
+        <a href="/marketing.html" class="navbar16_link w-nav-link lang-de">Marketing</a>
+        <a href="/projekte.html" class="navbar16_link w-nav-link lang-de">Projekte</a>
+        <a href="/uber-uns.html" class="navbar16_link w-nav-link lang-de">Über uns</a>
+        <a href="/blog.html" class="navbar16_link w-nav-link lang-de">News</a>
+  
+        <!-- Language Switcher Start -->
+        <div class="language-switcher" id="language-switcher" style="position: absolute; bottom: 2rem; left: 2rem; text-align: left; font-weight: bold;">
+          <a href="/index.html" class="lang-link is-active" id="lang-switch-de" data-lang="de">DE</a> / <a href="/en/index.html" class="lang-link" id="lang-switch-en" data-lang="en">EN</a>
+        </div>
+        <!-- Language Switcher End -->
+      </div>
+  
+      <div class="navbar16_bottom" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; position: relative;">
+        <div>
+          <a href="https://www.linkedin.com/in/judith-b-lenz-72735038/" target="_blank" class="footer2_social-link navbar16_social-icon" style="position: absolute; bottom: 2rem; right: 2rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 50 50">
+              <path d="M41,4H9C6.791,4,5,5.791,5,8v34c0,2.209,1.791,4,4,4h32c2.209,0,4-1.791,4-4V8C45,5.791,43.209,4,41,4z M17,39h-6V21h6V39z
+                M14,18.744c-1.934,0-3.5-1.604-3.5-3.582c0-1.978,1.566-3.582,3.5-3.582s3.5,1.604,3.5,3.582
+                C17.5,17.14,15.934,18.744,14,18.744z M39,39h-6V29c0-2.209-1.791-4-4-4s-4,1.791-4,4v10h-6V21h6v2.197C26.395,21.003,27.646,21,29,21
+                c5.523,0,10,4.477,10,10V39z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  
+  </nav>
+  
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const htmlEl = document.documentElement;
+      const bodyEl = document.body;
+
+      const observer = new MutationObserver(() => {
+        if (htmlEl.classList.contains("w-nav-open")) {
+          bodyEl.classList.add("menu-open");
+        } else {
+          bodyEl.classList.remove("menu-open");
+        }
+      });
+
+      observer.observe(htmlEl, { attributes: true, attributeFilter: ["class"] });
+    });
+  </script>
+  <style>
+    .lang-link {
+      color: white;
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+
+    .lang-link:hover {
+      opacity: 1;
+    }
+
+    .lang-link.is-active {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  </style>

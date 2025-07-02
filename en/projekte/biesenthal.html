@@ -1,0 +1,544 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Apr 21 2025 14:26:44 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="67c0b249a6f318c3bd411b17" data-wf-site="67c0abaf985a747e52982df8" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Biesenthal</title>
+  <meta content="Biesenthal" property="og:title">
+  <meta content="Biesenthal" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="/css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="/css/final-3eb27e.webflow.css" rel="stylesheet" type="text/css">
+  <link href="/css/menu-fix.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Droid Sans:400,700","Droid Serif:400,400italic,700,700italic","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","DM Sans:100,200,300,regular,500,600,700","Playfair Display:regular,500,600,700,800,900,italic"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="/images/webclip.png" rel="apple-touch-icon"><!--  Keep this css code to improve the font quality -->
+  <style>
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+  -webkit-appearance:none;
+}
+.navbar16_wrapper { margin-left: auto; }
+.navbar16_container { position: relative; }
+.navbar16_logo-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
+<script src="/js/menu-fix.js" type="text/javascript"></script>
+  <style>
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div data-animation="default" class="navbar16_component w-nav" style="min-height: 120px;"="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="all" data-w-id="2f92d482-79f0-28e2-a362-3219c34b3bd4" role="banner" data-duration="0">
+    <div class="navbar16_container">
+      <div class="navbar16_logo-wrapper">
+        <a href="/en/index.html" class="navbar16_logo-link w-nav-brand">
+          <img width="166" sizes="166px" alt="" src="/images/Logo-wide_1.png" loading="lazy" srcset="/images/Logo-wide_1-p-500.png 500w, /images/Logo-wide_1-p-800.png 800w, /images/Logo-wide_1-p-1080.png 1080w, /images/Logo-wide_1-p-1600.png 1600w, /images/Logo-wide_1-p-2000.png 2000w, /images/Logo-wide_1.png 2229w" class="navbar16_logo">
+        </a>
+      </div>
+      <div class="navbar16_wrapper">
+        <div id="menu-placeholder"></div>
+        <script>
+          const isEnglish = window.location.pathname.includes('/en/');
+          const menuFile = isEnglish ? '/en/menu.html' : '/menu.html';
+          fetch(menuFile)
+            .then(res => res.text())
+            .then(html => document.getElementById('menu-placeholder').innerHTML = html)
+            .then(() => {
+              const langSwitch = document.querySelector('.language-switch');
+              if (langSwitch) {
+                const currentLang = isEnglish ? 'en' : 'de';
+                langSwitch.querySelectorAll('a').forEach(link => {
+                  if (link.classList.contains(currentLang)) {
+                    link.classList.add('active-lang');
+                  } else {
+                    link.classList.remove('active-lang');
+                  }
+                });
+              }
+            });
+        </script>
+        <div class="navbar16_menu-button w-nav-button">
+          <div class="menu-icon4">
+            <div class="menu-icon4_wrapper">
+              <div class="menu-icon4_line-top"></div>
+              <div class="menu-icon4_line-middle">
+                <div class="menu-icon4_line-middle-top"></div>
+                <div class="menu-icon4_line-middle-base"></div>
+              </div>
+              <div class="menu-icon4_line-bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="global-styles w-embed">
+    <style>
+/* Ensure all elements inherit the color from its parent */
+body * {
+    color: inherit;
+}
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-slider-arrow-left,
+.w-slider-arrow-right,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+/* Prevent all click and hover interaction with an element */
+.pointer-events-off {
+	pointer-events: none;
+}
+/* Enables all click and hover interaction with an element */
+.pointer-events-on {
+  pointer-events: auto;
+}
+/* Create a class of .div-square which maintains a 1:1 dimension of a div */
+.div-square::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+/* Adds inline flex display */
+.display-inlineflex {
+  display: inline-flex;
+}
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+}
+.margin-0 {
+  margin: 0rem !important;
+}
+.padding-0 {
+  padding: 0rem !important;
+}
+.spacing-clean {
+padding: 0rem !important;
+margin: 0rem !important;
+}
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+.margin-vertical {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+/* Apply "..." at 100% width */
+.truncate-width { 
+		width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+/* Removes native scrollbar */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; 
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+</style>
+    </div>
+    <main class="main-wrapper">
+      <header class="section_biesenthal_hero-header-sektion">
+        <div class="biesenthal_hero-header-sektion_component">
+          <div class="biesenthal_hero-header-sektion_image-wrapper">
+            <div class="biesenthal_hero-header-sektion_background-image-wrapper">
+              <div class="image-overlay-layer hide"></div><img sizes="(max-width: 1920px) 100vw, 1920px" srcset="/images/DJI_0167-2-p-500.jpg 500w, /images/DJI_0167-2-p-800.jpg 800w, /images/DJI_0167-2-p-1080.jpg 1080w, /images/DJI_0167-3.jpg 1920w" alt="" src="/images/DJI_0167-3.jpg" loading="eager" class="biesenthal_hero-header-sektion_background-image">
+            </div>
+          </div>
+          <div class="padding-global">
+            <div class="container-large">
+              <div class="padding-vertical padding-xxlarge">
+                <div class="w-layout-grid biesenthal_hero-header-sektion_content-wrapper">
+                  <div class="biesenthal_hero-header-sektion_content-left">
+                    <h1 class="heading-style-h1">Barrier-Free Senior Living in Biesenthal</h1>
+                  </div>
+                  <div class="biesenthal_hero-header-sektion_content-right">
+                    <p class="text-size-medium">The <strong>Senior Living Biesenthal</strong> project stands for innovative living solutions that combine comfort, barrier-free living, and comprehensive care in a natural setting. With <strong>69 modern serviced apartments</strong>, this project offers tailored solutions for age-appropriate living, complemented by day care and outpatient care services.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="section_biesenthal_feature-sektion-1 animate-on-scroll">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="biesenthal_feature-sektion-1_component">
+                <div class="w-layout-grid biesenthal_feature-sektion-1_content">
+                  <div class="biesenthal_feature-sektion-1_content-left">
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="text-style-tagline">Challenge</div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <h2 class="heading-style-h2"><strong>Senior Living Tailored to Needs in Barnim Nature Park</strong></h2>
+                    </div>
+                    <div class="margin-bottom margin-medium">
+                      <p class="text-size-medium">Demographic change presents new challenges to society: the proportion of elderly people is steadily increasing, significantly raising the demand for age-appropriate living arrangements. The challenge is to combine comfortable, barrier-free living with professional care while addressing the individual needs of this growing population. The Senior Living Biesenthal project responds specifically to this trend and offers a contemporary solution in an idyllic setting.</p>
+                    </div>
+                    <div class="w-layout-grid biesenthal_feature-sektion-1_item-list">
+                      <div class="biesenthal_feature-sektion-1_text-wrapper">
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h6">Challenge</h3>
+                        </div>
+                        <p>A residential project addressing the increasing demand for barrier-free, assisted living units due to demographic change, focusing on comfort and care.</p>
+                      </div>
+                      <div class="biesenthal_feature-sektion-1_text-wrapper">
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h6">Solution</h3>
+                        </div>
+                        <p>69 modern serviced apartments that combine comfortable, barrier-free living with comprehensive care services. The location in the heart of nature offers a high quality of life.</p>
+                      </div>
+                    </div>
+                    <div class="margin-top margin-medium">
+                    </div>
+                  </div>
+                  <div class="biesenthal_feature-sektion-1_image-wrapper"><img loading="lazy" src="/images/006------PaulHentschelPhotography-Gross-d2dd5db7.webp" alt="Barrier-free senior apartments in Biesenthal, exterior view" class="biesenthal_feature-sektion-1_image"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_biesenthal_feature-sektion-4 animate-on-scroll">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="biesenthal_feature-sektion-4_component">
+                <div class="w-layout-grid biesenthal_feature-sektion-4_content">
+                  <div class="biesenthal_feature-sektion-4_content-left">
+                    <div class="margin-bottom margin-small">
+                      <h2 class="heading-style-h2">Key Information about Senior Living Biesenthal</h2>
+                    </div>
+                    <p class="text-size-medium">The project comprises 69 barrier-free serviced apartments in an idyllic setting. With a gross floor area of approx. xxx and a project volume of X million €, we offer modern living comfort.</p>
+                    <div class="margin-top margin-medium">
+                      <div class="button-group">
+                        <a href="/en/kontakt.html" class="button is-secondary w-button">Contact</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="biesenthal_feature-sektion-4_image-wrapper"><img loading="lazy" src="/images/CV6I8567.jpg" alt="Modern senior living facility Biesenthal, main entrance" class="biesenthal_feature-sektion-4_image"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_layout341 text-color-white animate-on-scroll">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="layout341_component">
+                <div class="margin-bottom margin-xxlarge">
+                  <div class="w-layout-grid layout341_content">
+                    <div class="layout341_content-left">
+                      <div class="margin-bottom margin-xsmall">
+                        <div class="text-style-tagline text-color-white">Highlights</div>
+                      </div>
+                      <h2 class="heading-style-h2 text-color-white">Comfortable Living with Comprehensive Care</h2>
+                    </div>
+                    <div class="layout341_content-right">
+                      <p class="text-size-medium">Senior Living Biesenthal combines modern living, professional care, and a close-to-nature lifestyle in a unique concept. The serviced apartments are specifically tailored to the needs of seniors and offer a high level of quality of life and security.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-layout-grid layout341_list">
+                  <div class="layout341_item">
+                    <div class="margin-bottom margin-small">
+                      <div class="layout341_item-icon-wrapper"><img loading="lazy" src="/images/modern1.svg" alt="" class="icon-1x1-medium"></div>
+                    </div>
+                    <div class="margin-bottom margin-xsmall">
+                      <h3 class="heading-style-h5 text-color-white">Modern Serviced Apartments</h3>
+                    </div>
+                    <p>Comfortably and barrier-free designed</p>
+                  </div>
+                  <div class="layout341_item">
+                    <div class="margin-bottom margin-small">
+                      <div class="layout341_item-icon-wrapper"><img loading="lazy" src="/images/betreuung1.svg" alt="" class="icon-1x1-medium"></div>
+                    </div>
+                    <div class="margin-bottom margin-xsmall">
+                      <h3 class="heading-style-h5 text-color-white">Care &amp; Support</h3>
+                    </div>
+                    <p>Day care, outpatient care, and community services for an active and fulfilling life.</p>
+                  </div>
+                  <div class="layout341_item">
+                    <div class="margin-bottom margin-small">
+                      <div class="layout341_item-icon-wrapper"><img loading="lazy" src="/images/natur1.svg" alt="" class="icon-1x1-medium"></div>
+                    </div>
+                    <div class="margin-bottom margin-xsmall">
+                      <h3 class="heading-style-h5 text-color-white">Living Close to Nature</h3>
+                    </div>
+                    <p>The idyllic location in Barnim Nature Park offers tranquility and quality of life with excellent connections to Berlin.</p>
+                  </div>
+                  <div class="layout341_item">
+                    <div class="margin-bottom margin-small">
+                      <div class="layout341_item-icon-wrapper"><img loading="lazy" src="/images/nachhaltig1.svg" alt="" class="icon-1x1-medium"></div>
+                    </div>
+                    <div class="margin-bottom margin-xsmall">
+                      <h3 class="heading-style-h5 text-color-white">Sustainable Planning</h3>
+                    </div>
+                    <p>The apartments meet the highest energy efficiency standards according to KfW and thus offer future-oriented living at the highest level.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layout341_background-video-wrapper" style="background-color: rgba(0, 0, 0, 0.3);">
+          <div class="video-overlay-layer"></div>
+        </div>
+      </section>
+      <section class="section_biesenthal_feature-sektion-3 animate-on-scroll">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="biesenthal_feature-sektion-3_component">
+                <div class="w-layout-grid biesenthal_feature-sektion-3_content">
+                  <div class="biesenthal_feature-sektion-3_content-left">
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="text-style-tagline">Comfort</div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <h2 class="heading-style-h2">Features and Characteristics of the Apartments</h2>
+                    </div>
+                    <div class="margin-bottom margin-medium">
+                      <p class="text-size-medium">Our serviced apartments at <strong>Senior Living Biesenthal</strong> offer the highest level of living comfort, combined with barrier-free design and extensive care services. This concept not only meets the requirements for age-appropriate living but also sets new standards in terms of safety, quality of life, and sustainability.</p>
+                    </div>
+                    <div class="w-layout-grid biesenthal_feature-sektion-3_item-list">
+                      <div class="biesenthal_feature-sektion-3_item">
+                        <div class="margin-bottom margin-xsmall">
+                          <div class="biesenthal_feature-sektion-3_item-icon-wrapper"><img loading="lazy" src="/images/barriere.svg" alt="" class="icon-1x1-medium"></div>
+                        </div>
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h6">Barrier-Free Design</h3>
+                        </div>
+                        <p>Each apartment is fully barrier-free, enabling independent living in a supportive environment. This design meets modern standards for senior-friendly living and ensures long-term residential security.</p>
+                      </div>
+                      <div class="biesenthal_feature-sektion-3_item">
+                        <div class="margin-bottom margin-xsmall">
+                          <div class="biesenthal_feature-sektion-3_item-icon-wrapper"><img loading="lazy" src="/images/betreuungsangebote.svg" alt="" class="icon-1x1-medium"></div>
+                        </div>
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h6">Care Services</h3>
+                        </div>
+                        <p>Professional care concepts and tailored community services promote an active and fulfilling life. Care facilities are seamlessly integrated into the living concept to ensure holistic support.</p>
+                      </div>
+                    </div>
+                    <div class="margin-top margin-medium">
+                      <div class="button-group">
+                        <a href="/en/kontakt.html" class="button is-secondary w-button">Request Information</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="biesenthal_feature-sektion-3_image-wrapper"><img loading="lazy" src="/images/Haus-2-4.jpg" alt="Barrier-free apartment interior, Biesenthal" class="biesenthal_feature-sektion-3_image"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_biesenthal_feature-sektion-4">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="biesenthal_feature-sektion-4_component">
+                <div class="w-layout-grid biesenthal_feature-sektion-4_content">
+                  <div class="biesenthal_feature-sektion-4_content-left">
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="text-style-tagline">Nature</div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <h2 class="heading-style-h2">Living in Barnim Nature Park with Close Proximity to the Capital</h2>
+                    </div>
+                    <p class="text-size-medium">Biesenthal offers an idyllic setting in Barnim Nature Park, ideal for seniors. Its proximity to Berlin provides excellent access to the metropolis, while the peaceful nature ensures relaxation and high quality of life.</p>
+                    <div class="margin-top margin-medium">
+                      <div class="button-group">
+                        <a href="/en/kontakt.html" class="button is-secondary w-button">Contact</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="biesenthal_feature-sektion-4_image-wrapper"><img loading="lazy" src="/images/Haus-4.jpg" alt="Senior living Biesenthal, surrounded by nature" class="biesenthal_feature-sektion-4_image"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_biesenthal_cta-sektion animate-on-scroll">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="biesenthal_cta-sektion_component">
+                <div class="max-width-large">
+                  <div class="margin-bottom margin-small">
+                    <h2 class="heading-style-h2">Contact Us Now for More Information</h2>
+                  </div>
+                  <p class="text-size-medium">Learn more about our barrier-free apartments and schedule a consultation.</p>
+                  <div class="margin-top margin-medium">
+                    <div class="button-group">
+                      <a href="/en/kontakt.html" class="button w-button">Contact</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      const footerFile = isEnglish ? '/en/footer.html' : '/footer.html';
+      fetch(footerFile)
+        .then(res => res.text())
+        .then(html => document.getElementById('footer-placeholder').innerHTML = html);
+    </script>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=67c0abaf985a747e52982df8" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="/js/webflow.js" type="text/javascript"></script>
+</body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(elem => {
+        observer.observe(elem);
+      });
+    });
+  </script>
+</html>

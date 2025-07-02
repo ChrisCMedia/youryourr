@@ -1,0 +1,6 @@
+SpaceID:1agkyf9fpd7h
+name:blog
+contentmodelID:blogpost
+ContentDeliveryAPI:ZCr4zPOCDfBJ_Rq3q6iP2N_yIXm8HTOIF0LxzhGO6VE
+ContentPreviewAPI:GMVqyLsEA8kjFry14JvEs9E2qWGt_m4M-2DqACdDaUA
+CMA:CFPAT-3FLDPpv9xowOLLOKhbWnwEMg-2xb65g8SjJSR2suLB8

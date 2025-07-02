@@ -1,0 +1,61 @@
+/* Menu Fullscreen Fix */
+.navbar16_menu {
+  overflow: hidden !important; /* Verhindert das Scrollen innerhalb des Menüs */
+  height: 100vh !important; /* Setzt die Höhe auf exakt die Bildschirmhöhe */
+  position: fixed !important; /* Fixiert das Menü */
+  max-height: 100vh !important; /* Begrenzt die maximale Höhe */
+}
+
+/* Für mobile Geräte */
+@media screen and (max-width: 991px) {
+  .navbar16_menu {
+    overflow: hidden !important;
+    height: 100vh !important;
+    position: fixed !important;
+    max-height: 100vh !important;
+  }
+  
+  /* Zusätzlich sicherstellen, dass der Body nicht scrollbar ist, wenn das Menü offen ist */
+  body.menu-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Passt die Links-Wrapper Größe an */
+  .navbar16_links-wrapper {
+    overflow: hidden !important;
+    max-height: calc(100vh - 150px) !important; /* Platz für Bottom-Bereich lassen */
+  }
+} 
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Aktiver Sprach-Link hervorheben */
+.language-switch a.active {
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.navbar16_link {
+  transition: color 0.2s;
+}
+
+.navbar16_link:hover {
+  color: var(--base-color-brand--sec-light) !important;
+}
+
+.navbar16_link.w--current {
+  color: var(--base-color-brand--sec-main) !important;
+}
+
+.navbar16_link {
+  font-size: 3.6rem; /* vorher evtl. 1.8rem */
+  font-weight: 600; /* etwas weniger fett, aber immer noch präsent */
+  line-height: 1;
+  letter-spacing: 0.3px;
+}

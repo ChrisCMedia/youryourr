@@ -1,0 +1,672 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  -->
+<!--  Last Published: Mon Apr 21 2025 14:26:44 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="67c0b213847ee70a0be4aXXX" data-wf-site="67c0abaf985a747e52982df8" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Marketing for Real Estate Projects</title>
+  <meta content="Marketing for Real Estate Projects" property="og:title">
+  <meta content="Marketing for Real Estate Projects" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/final-3eb27e.webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/menu-fix.css" rel="stylesheet" type="text/css">
+  <link href="../css/animations.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Droid Sans:400,700","Droid Serif:400,400italic,700,700italic","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","DM Sans:100,200,300,regular,500,600,700","Playfair Display:regular,500,600,700,800,900,italic"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="../images/webclip.png" rel="apple-touch-icon">
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <style>
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+  -webkit-appearance:none;
+  }
+  .navbar16_wrapper { margin-left: auto; }
+  .navbar16_container { position: relative; }
+  .navbar16_logo-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+  }
+
+  /* Styles for Why Us List */
+  .marketing_why-us_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 2rem; /* Spacing between items */
+    padding-bottom: 2rem; /* Add some padding at the bottom */
+  }
+
+  .marketing_why-us_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icon and text block horizontally */
+    text-align: center; /* Center text content */
+  }
+
+  .marketing_why-us_item-icon-wrapper {
+    width: 40px; /* Icon container width - adjusted */
+    height: 40px; /* Icon container height - adjusted */
+    margin-bottom: 1rem; /* Space below icon */
+  }
+
+  /* The img tag inside now has inline 100% width/height */
+
+  .marketing_why-us_item-text-wrapper h4 {
+    margin-bottom: 0.5rem; /* Space below heading */
+  }
+  /* END Styles for Why Us List */
+
+  /* START: New Styles for Stage & Navigation Services Layout */
+    .section_marketing_stage_nav_services {
+      /* padding: 2rem 0; */ /* Handled by inner padding-global */
+    }
+
+    .stage-nav-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem; /* Space between stage and nav bar */
+    }
+
+    #service-main-stage {
+      width: 100%;
+      max-width: 700px; /* Max width of the main display area */
+      height: 525px; /* Fixed height to prevent jumping and accommodate content */
+      padding: 2rem;
+      background-color: #ffffff; /* Optional: background for the stage */
+      border-radius: 12px;
+      /* box-shadow: 0 10px 30px rgba(0,0,0,0.08); */ /* Optional: subtle shadow */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.9s ease-in-out, transform 0.9s ease-in-out; /* Smoother transition */
+    }
+    #service-main-stage.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #service-main-stage .main-stage-animation-container {
+      width: 300px; /* Size for the main Lottie animation */
+      height: 300px;
+      margin-bottom: 1.5rem;
+    }
+
+    #service-main-stage dotlottie-player {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #service-main-stage .main-stage-title {
+      font-size: 2rem; /* Prominent title */
+      font-weight: 700;
+      color: #222; /* Darker title color */
+      margin-bottom: 1rem;
+    }
+
+    #service-main-stage .main-stage-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      max-width: 600px; /* Control text width */
+    }
+
+    #services-navigation-bar {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align items to top for consistent baseline */
+      gap: 1rem;
+      flex-wrap: wrap; /* Allow wrapping on very small screens */
+      padding: 1rem;
+      width: 100%;
+      max-width: 1000px; /* Max width of the nav bar */
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0.75rem;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+      width: calc(20% - 1rem); /* Aim for 5 items, considering gap */
+      min-width: 120px; /* Prevent extreme squishing */
+    }
+
+    .nav-item:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-3px);
+    }
+
+    .nav-item.is-active-nav-item {
+      border-color: #c8a45c; /* Highlight color for active nav item */
+      background-color: #fff5e6; /* Light background for active nav item */
+    }
+
+    .nav-item .nav-animation-container {
+      width: 80px; /* Size for small Lottie in nav */
+      height: 80px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .nav-item .nav-animation-container .black-dot-placeholder {
+        /* Replaced by step number */
+        display: none; 
+    }
+
+    .nav-item .nav-animation-container .nav-item-step-number {
+      font-size: 1.8rem; /* Size for step number */
+      font-weight: 700;
+      color: #555; /* Color for step number */
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      width: 100%;   
+      height: 100%;  
+    }
+
+    .nav-item .nav-animation-container dotlottie-player {
+        display: none; /* Hide Lottie by default in nav */
+    }
+
+    /* Show Lottie and hide dot for active nav item, or on hover */
+    .nav-item.is-active-nav-item .nav-animation-container dotlottie-player,
+    .nav-item:hover .nav-animation-container dotlottie-player {
+      display: block;
+      filter: grayscale(0%); /* Full color on hover/active */
+    }
+    .nav-item.is-active-nav-item .nav-animation-container .black-dot-placeholder,
+    .nav-item:hover .nav-animation-container .black-dot-placeholder,
+    .nav-item.is-active-nav-item .nav-animation-container .nav-item-step-number, /* Hide number when Lottie is active */
+    .nav-item:hover .nav-animation-container .nav-item-step-number { /* Hide number on hover when Lottie shows */
+      display: none;
+    }
+    /* For non-active, non-hovered nav items, Lottie is grayscale if we choose to show it */
+    /* 
+    .nav-item:not(.is-active-nav-item):not(:hover) .nav-animation-container dotlottie-player {
+        filter: grayscale(100%); 
+    }
+    */
+
+    .nav-item .nav-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #555;
+    }
+    .nav-item.is-active-nav-item .nav-title {
+        color: #c8a45c;
+    }
+
+   /* END: New Styles for Stage & Navigation Services Layout */
+
+  </style>
+  <style>
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <script src="../js/menu-fix.js" type="text/javascript"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="global-styles w-embed">
+       <style>
+       /* Global styles from template - assumed correct */
+       body * { color: inherit; }
+       a, .w-input, .w-select, .w-tab-link, .w-nav-link, .w-slider-arrow-left, .w-slider-arrow-right, .w-dropdown-btn, .w-dropdown-toggle, .w-dropdown-link { color: inherit; text-decoration: inherit; font-size: inherit; }
+       *[tabindex]:focus-visible, input[type="file"]:focus-visible { outline: 0.125rem solid #4d65ff; outline-offset: 0.125rem; }
+       .w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child { margin-top: 0 !important; }
+       .w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child { margin-bottom: 0 !important; }
+       .pointer-events-off { pointer-events: none; }
+       .pointer-events-on { pointer-events: auto; }
+       .div-square::after { content: ""; display: block; padding-bottom: 100%; }
+       .container-medium,.container-small, .container-large { margin-right: auto !important; margin-left: auto !important; }
+       .text-style-3lines { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+       .text-style-2lines { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+       .display-inlineflex { display: inline-flex; }
+       .hide { display: none !important; }
+       @media screen and (max-width: 991px) { .hide, .hide-tablet { display: none !important; } }
+       @media screen and (max-width: 767px) { .hide-mobile-landscape{ display: none !important; } }
+       @media screen and (max-width: 479px) { .hide-mobile{ display: none !important; } }
+       .margin-0 { margin: 0rem !important; }
+       .padding-0 { padding: 0rem !important; }
+       .spacing-clean { padding: 0rem !important; margin: 0rem !important; }
+       .margin-top { margin-right: 0rem !important; margin-bottom: 0rem !important; margin-left: 0rem !important; }
+       .padding-top { padding-right: 0rem !important; padding-bottom: 0rem !important; padding-left: 0rem !important; }
+       .margin-right { margin-top: 0rem !important; margin-bottom: 0rem !important; margin-left: 0rem !important; }
+       .padding-right { padding-top: 0rem !important; padding-bottom: 0rem !important; padding-left: 0rem !important; }
+       .margin-bottom { margin-top: 0rem !important; margin-right: 0rem !important; margin-left: 0rem !important; }
+       .padding-bottom { padding-top: 0rem !important; padding-right: 0rem !important; padding-left: 0rem !important; }
+       .margin-left { margin-top: 0rem !important; margin-right: 0rem !important; margin-bottom: 0rem !important; }
+       .padding-left { padding-top: 0rem !important; padding-right: 0rem !important; padding-bottom: 0rem !important; }
+       .margin-horizontal { margin-top: 0rem !important; margin-bottom: 0rem !important; }
+       .padding-horizontal { padding-top: 0rem !important; padding-bottom: 0rem !important; }
+       .margin-vertical { margin-right: 0rem !important; margin-left: 0rem !important; }
+       .padding-vertical { padding-right: 0rem !important; padding-left: 0rem !important; }
+       .truncate-width { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+       .no-scrollbar { -ms-overflow-style: none; overflow: -moz-scrollbars-none; }
+       .no-scrollbar::-webkit-scrollbar { display: none; }
+       </style>
+    </div>
+    <div data-animation="default" class="navbar16_component w-nav" style="min-height: 120px;"="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="all" data-w-id="2f92d482-79f0-28e2-a362-3219c34b3bd4" role="banner" data-duration="0">
+       <div class="navbar16_container">
+         <div class="navbar16_logo-wrapper">
+           <a href="/en/index.html" class="navbar16_logo-link w-nav-brand">
+             <img width="166" sizes="166px" alt="" src="../images/Logo-wide_1.png" loading="lazy" srcset="../images/Logo-wide_1-p-500.png 500w, ../images/Logo-wide_1-p-800.png 800w, ../images/Logo-wide_1-p-1080.png 1080w, ../images/Logo-wide_1-p-1600.png 1600w, ../images/Logo-wide_1-p-2000.png 2000w, ../images/Logo-wide_1.png 2229w" class="navbar16_logo">
+           </a>
+         </div>
+         <div class="navbar16_wrapper">
+           <div id="menu-placeholder"></div>
+           <script>
+             // Menu loading script from template - assumed correct
+             const currentLang = location.pathname.includes("/en") ? "en" : "de";
+             const menuPath = currentLang === "en" ? "menu.html" : "menu.html"; // Adjust path if needed
+             fetch(menuPath)
+               .then(res => res.text())
+               .then(html => {
+                 document.getElementById("menu-placeholder").innerHTML = html;
+                 // Language switcher and active link logic from template...
+                 const langSwitcher = document.querySelector('.language-switcher');
+                 if (langSwitcher) { /* ... */ }
+                 const currentPath = window.location.pathname.replace(/\/$/, '');
+                 const menuLinks = document.querySelectorAll('.navbar16_link');
+                 menuLinks.forEach(link => { /* ... */ });
+               });
+           </script>
+           <div class="navbar16_menu-button w-nav-button">
+             <div class="menu-icon4">
+               <div class="menu-icon4_wrapper">
+                 <div class="menu-icon4_line-top"></div>
+                 <div class="menu-icon4_line-middle">
+                   <div class="menu-icon4_line-middle-top"></div>
+                   <div class="menu-icon4_line-middle-base"></div>
+                 </div>
+                 <div class="menu-icon4_line-bottom"></div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+    </div>
+    <main class="main-wrapper">
+       <header class="section_marketing_header animate-fade-in animate-on-scroll">
+         <section class="section_layout49 text-color-alternate">
+           <div class="padding-global">
+             <div class="container-large">
+               <div class="padding-section-large" style="padding-top: 5rem; padding-bottom: 22rem;">
+                 <div class="layout49_component">
+                   <div class="layout49_content-left">
+                     <div class="margin-bottom margin-xsmall">
+                       <div class="text-style-tagline text-color-white animate-slide-up delay-200">Marketing for Real Estate Projects</div>
+                     </div>
+                     <h2 class="heading-style-h2 animate-slide-up delay-400 text-color-white">Visibility for Properties That Inspire Confidence.</h2>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="layout49_background-image-wrapper">
+             <div class="image-overlay-layer"></div>
+             <img sizes="100vw" src="../images/marketing-bild-header.jpg" loading="lazy" class="layout49_background-image" style="object-position: center 25%;">
+           </div>
+         </section>
+       </header>
+
+       <!-- START: New Two-Column Intro Section -->
+       <section class="section_marketing_intro_styled animate-fade-in animate-on-scroll">
+         <div class="padding-global">
+           <div class="container-large">
+             <div class="padding-section-medium" style="padding-top: 60px; padding-bottom: 60px;">
+               <!-- Decorative element -->
+               <div style="display: flex; justify-content: center; margin-bottom: 35px;">
+                 <div style="width: 80px; height: 2px; background-color: #88563C;"></div>
+               </div>
+
+               <div class="w-layout-grid grid-2-columns" style="grid-template-columns: 1fr 1fr; grid-gap: 40px; position: relative;">
+                 <!-- Central divider -->
+                 <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background-color: #e8e8e8; transform: translateX(-50%);"></div>
+
+                 <div class="text-column animate-slide-up delay-200" style="position: relative; padding-right: 40px;">
+                   <!-- Optional: Decorative quote mark -->
+                   <!-- <div style="position: absolute; top: -20px; left: 0px; color: #c8a45c; opacity: 0.2; font-size: 90px; font-family: serif; line-height: 1;">"</div> -->
+                   <div class="margin-bottom margin-small" style="position: relative; z-index: 2;">
+                     <p class="text-size-medium">Whether a new development, existing property, or land – we develop and implement <span style="color: #88563C;"><strong>strategic marketing solutions</strong></span> to successfully position your real estate on the market.</p>
+                     <p class="text-size-medium">Our team combines <strong>real estate expertise</strong> with <strong>creative brand vision</strong>. Our goal: <span style="color: #88563C;"><strong>measurable results</strong></span> and maximum attention for your project.</p>
+                   </div>
+                 </div>
+                 <div class="text-column animate-slide-up delay-400" style="position: relative; padding-left: 40px;">
+                   <div class="margin-bottom margin-small">
+                     <p class="text-size-medium">From <strong>naming and branding</strong> to <strong>project websites</strong>, <strong>visualizations</strong>, and targeted <strong>lead generation</strong> – we manage your marketing <span style="color: #88563C;"><strong>holistically and performance-driven</strong></span>.</p>
+                     <p class="text-size-medium">Rely on our <strong>many years of experience</strong> in real estate marketing and our strong network of <strong>creative and media partners</strong>.</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+       <!-- END: New Two-Column Intro Section -->
+
+       <!-- START: New Stage & Navigation Services Section -->
+       <section class="section_marketing_stage_nav_services animate-fade-in animate-on-scroll">
+         <div class="padding-global">
+           <div class="container-large">
+             <div class="padding-section-large" style="padding-top: 3rem; padding-bottom: 3rem;">
+                <div class="margin-bottom margin-xlarge">
+                  <div class="text-align-center">
+                    <div class="max-width-large align-center">
+                      <div class="margin-bottom margin-small">
+                        <h2 class="heading-style-h2 animate-slide-up">Our Services at a Glance</h2>
+                      </div>
+                      <p class="text-size-medium text-style-tagline animate-slide-up delay-200">Strategic, creative, and data-driven.</p>
+                    </div>
+                  </div>
+                </div>
+
+               <div class="stage-nav-layout">
+                 <div id="service-main-stage"></div>
+                 <div id="services-navigation-bar"></div>
+               </div>
+
+             </div>
+           </div>
+         </div>
+       </section>
+       <!-- END: New Stage & Navigation Services Section -->
+
+       <!-- START: Why Us Icon List Section -->
+       <section class="section_marketing_why_us animate-fade-in animate-on-scroll">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="marketing_why-us_component">
+                <div class="text-align-center margin-bottom margin-xlarge">
+                   <h2 class="heading-style-h2 animate-slide-up">Why Choose YOUR TIMES REAL ESTATE?</h2>
+                </div>
+                <div class="marketing_why-us_list">
+                  <div class="marketing_why-us_item animate-slide-up delay-200">
+                     <div class="marketing_why-us_item-icon-wrapper">
+                       <img src="../images/search_insights_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="In-depth Market Knowledge" style="width: 100%; height: 100%;">
+                     </div>
+                     <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
+                         <h4 class="heading-style-h5">In-depth Market Knowledge</h4>
+                         <p class="text-size-medium">We know the real estate market and understand its dynamics.</p>
+                     </div>
+                  </div>
+                  <div class="marketing_why-us_item animate-slide-up delay-400">
+                      <div class="marketing_why-us_item-icon-wrapper">
+                         <img src="../images/real_estate_agent_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Real Estate-Savvy Creative Team" style="width: 100%; height: 100%;">
+                       </div>
+                     <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
+                       <h4 class="heading-style-h5">Real Estate-Savvy Creative Team</h4>
+                       <p class="text-size-medium">Our team speaks the language of real estate and creativity.</p>
+                     </div>
+                  </div>
+                  <div class="marketing_why-us_item animate-slide-up delay-600">
+                      <div class="marketing_why-us_item-icon-wrapper">
+                         <img src="../images/diversity_3_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Strong Networks" style="width: 100%; height: 100%;">
+                       </div>
+                     <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
+                       <h4 class="heading-style-h5">Strong Networks</h4>
+                       <p class="text-size-medium">Benefit from our connections in project development.</p>
+                     </div>
+                  </div>
+                   <div class="marketing_why-us_item animate-slide-up delay-800">
+                      <div class="marketing_why-us_item-icon-wrapper">
+                         <img src="../images/editor_choice_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Highest Standards" style="width: 100%; height: 100%;">
+                       </div>
+                     <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
+                       <h4 class="heading-style-h5">Highest Standards</h4>
+                       <p class="text-size-medium">We focus on quality and impact for your marketing.</p>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       <!-- END: Why Us Icon List Section -->
+
+       <section class="section_cta3 text-color-alternate animate-scale-in animate-on-scroll">
+         <div class="padding-global">
+           <div class="container-large">
+             <div class="padding-section-large">
+               <div class="cta3_component">
+                 <div class="max-width-large">
+                   <div class="margin-bottom margin-small">
+                     <h2 class="heading-style-h2 text-color-white">We put your project in the spotlight.</h2>
+                   </div>
+                   <p class="text-size-medium text-color-white">Let’s develop a powerful marketing strategy together.</p>
+                   <div class="margin-top margin-medium">
+                     <div class="button-group">
+                       <a href="/en/kontakt.html" class="button is-secondary is-alternate w-button">Contact Us</a>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="cta3_background-image-wrapper">
+           <div class="image-overlay-layer"></div>
+           <img sizes="(max-width: 1000px) 100vw, 1000px" srcset="" alt="Contact Background Marketing" src="../images/cc102d9e-c313-4bfd-80de-1ee27b4fe630.jpg" loading="lazy" class="cta3_background-image">
+         </div>
+       </section>
+     </main>
+     <div id="footer-placeholder"></div>
+     <script>
+       // Footer loading script from template - assumed correct
+       const footerPath = location.pathname.includes("/en") ? "footer.html" : "footer.html"; // Adjust path if needed
+       fetch(footerPath)
+         .then(res => res.text())
+         .then(html => document.getElementById('footer-placeholder').innerHTML = html);
+     </script>
+   </div>
+   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=67c0abaf985a747e52982df8" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+   <script src="../js/webflow.js" type="text/javascript"></script>
+   <script src="../js/language-switcher.js" type="text/javascript"></script>
+   <script src="../js/animation.js" type="text/javascript"></script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mainStage = document.getElementById('service-main-stage');
+      const navBar = document.getElementById('services-navigation-bar');
+      let currentActiveIndex = 0;
+
+      const stepsData = [
+        {
+          id: 'branding',
+          lottieSrc: "../images/optimized-lottie.json",
+          title: "1 | Branding & Identity",
+          description: "From project naming and corporate design to brand positioning – we give your property a clear and distinctive profile."
+        },
+        {
+          id: 'campaign',
+          lottieSrc: "../images/optimized-lottie-2.json",
+          title: "2 | Online Marketing & Campaigns",
+          description: "Digital reach and lead generation through targeted SEO, social media, Google Ads, and email campaigns – tailored to your specific audiences."
+        },
+        {
+          id: 'presentation',
+          lottieSrc: "https://lottie.host/7b2d3470-af03-483f-9ac3-2fa0dd0cfb96/RzEePoIbqB.lottie",
+          title: "3 | Visualization & Presentation",
+          description: "Professional 3D renderings, animations, videos, drone shots, and high-quality exposés for an emotional presentation of your properties."
+        },
+        {
+          id: 'web',
+          lottieSrc: "../images/optimized-lottie-4.json",
+          title: "4 | Project Websites & Landing Pages",
+          description: "Mobile-optimized, GDPR-compliant websites with a clear focus on conversion – modern, informative, and user-friendly."
+        },
+        {
+          id: 'reporting',
+          lottieSrc: "../images/optimized-lottie-5.json",
+          title: "5 | Reporting & Optimization",
+          description: "Regular analysis of your campaigns based on clearly defined KPIs – transparent, data-driven, and goal-oriented."
+        }
+      ];
+
+      function renderMainStage(stepData) {
+        if (!mainStage) return;
+
+        function setupNewContent() {
+            mainStage.innerHTML = ''; // Clear previous content
+            
+            const animationContainer = document.createElement('div');
+            animationContainer.className = 'main-stage-animation-container';
+            const player = document.createElement('dotlottie-player');
+            player.setAttribute('src', stepData.lottieSrc);
+            player.setAttribute('background', 'transparent');
+            player.setAttribute('speed', '1');
+            player.setAttribute('loop', '');
+            player.setAttribute('autoplay', '');
+            animationContainer.appendChild(player);
+
+            const titleElement = document.createElement('h5');
+            titleElement.className = 'main-stage-title';
+            titleElement.textContent = stepData.title;
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.className = 'main-stage-description';
+            descriptionElement.textContent = stepData.description;
+
+            mainStage.appendChild(animationContainer);
+            mainStage.appendChild(titleElement);
+            mainStage.appendChild(descriptionElement);
+
+            // Trigger fade-in of new content
+            // Using double requestAnimationFrame for a more robust reflow before adding class
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    mainStage.classList.add('visible');
+                });
+            });
+        }
+
+        if (mainStage.classList.contains('visible')) {
+            mainStage.classList.remove('visible');
+            mainStage.addEventListener('transitionend', function handler() {
+                mainStage.removeEventListener('transitionend', handler);
+                setupNewContent();
+            }, { once: true });
+        } else {
+            // Initial load or if stage was hidden for some reason
+            setupNewContent();
+        }
+      }
+
+      function renderNavigationBar(activeIndex) {
+        if (!navBar) return;
+        navBar.innerHTML = ''; // Clear previous nav items
+
+        stepsData.forEach((stepData, index) => {
+          const navItem = document.createElement('div');
+          navItem.className = 'nav-item';
+          navItem.dataset.index = index;
+
+          const animContainer = document.createElement('div');
+          animContainer.className = 'nav-animation-container';
+          
+          const player = document.createElement('dotlottie-player');
+          player.setAttribute('src', stepData.lottieSrc);
+          player.setAttribute('background', 'transparent');
+          player.setAttribute('speed', '1');
+          // player.setAttribute('loop', ''); // No loop for nav items generally
+          animContainer.appendChild(player);
+
+          const stepNumberElement = document.createElement('span');
+          stepNumberElement.className = 'nav-item-step-number';
+          stepNumberElement.textContent = index + 1;
+          animContainer.appendChild(stepNumberElement);
+
+          navItem.appendChild(animContainer);
+
+          const title = document.createElement('p');
+          title.className = 'nav-title';
+          
+          // Originaler Titel aus stepsData (z.B. "1 | Branding & Identität")
+          const originalTitle = stepData.title; 
+          // Entferne "X | " Präfix für die Navigationsleiste
+          const pipeIndex = originalTitle.indexOf(' | ');
+          const displayTitleInNav = pipeIndex !== -1 ? originalTitle.substring(pipeIndex + 3) : originalTitle;
+          title.textContent = displayTitleInNav; // Zeige nur den reinen Titel an
+          
+          navItem.appendChild(title);
+
+          if (index === activeIndex) {
+            navItem.classList.add('is-active-nav-item');
+            // player.play(); // Optionally play small Lottie in active nav item
+          }
+
+          // For steps 1 (index 0) and 4 (index 3), seek to a slightly later frame
+          // to improve their initial appearance in the nav bar on hover.
+          if (index === 0 || index === 3) {
+            player.addEventListener('ready', () => {
+              player.seek(100); // Seek to frame 100 (0-indexed)
+              player.pause(); // Ensure it remains paused
+            }, { once: true }); // Ensure this listener is added only once
+          }
+
+          navItem.addEventListener('click', function() {
+            const clickedIndex = parseInt(this.dataset.index);
+            updateFullDisplay(clickedIndex);
+          });
+          navBar.appendChild(navItem);
+        });
+      }
+
+      function updateFullDisplay(activeIndex) {
+        currentActiveIndex = activeIndex;
+        renderMainStage(stepsData[currentActiveIndex]);
+        renderNavigationBar(currentActiveIndex);
+      }
+
+      // Initial Load
+      if (stepsData.length > 0) {
+        updateFullDisplay(0); // Display step 1 (index 0) by default
+      }
+    });
+   </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+  
+      document.querySelectorAll('.animate-on-scroll').forEach(elem => {
+        observer.observe(elem);
+      });
+    });
+  </script>
+ </body>
+ </html>
