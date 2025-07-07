@@ -35,6 +35,19 @@
     /* border-bottom: 1px solid black; */ /* Removed border from container */
   }
   
+  .investment-advisory_layout_tabs-menu::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: var(--line-left, 0px);
+    width: var(--line-width, 0px);
+    height: 6px;
+    background-color: #c8a45c;
+    transition: left 0.3s ease, width 0.3s ease;
+    z-index: 3;
+    border-radius: 2px;
+  }
+  
   .investment-advisory_layout_tab-link {
     padding: 18px 25px;
     border-radius: 0; /* Ensure no rounding */
@@ -59,7 +72,7 @@
       background-color: rgba(0, 0, 0, 0);
   }
 
-  /* Remove the ::after hover indicator, we use the main brown line now */
+  /* Removed the ::after hover indicator, we use the main brown line now */
   .investment-advisory_layout_tab-link::after {
       content: none; 
   }
@@ -76,13 +89,7 @@
 
   /* Add top brown line indicator for the active tab */
   .investment-advisory_layout_tab-link.w--current::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px; /* Line thickness */
-    background: #c8a45c; /* Brown color */
+    content: none;
   }
 
   .investment-advisory_layout_tab-link h3 {
@@ -535,7 +542,7 @@ margin: 0rem !important;
                                         <div class="career3_list">
                                           <div class="career3_item">
                                             <div class="max-width-large">
-                                              <p>Profitieren Sie von präzisen Kaufpreiseinschätzungen und tiefgehenden Marktanalysen. Wir identifizieren Optimierungspotenziale – von Neubauentwicklungen bis hin zu Modernisierungen und Nachverdichtungen – und erarbeiten individuelle Strategien, die Ihr Objekt bestmöglich positionieren.</p>
+                                              <p>Profitieren Sie von unserer <strong>umfassenden Marktkenntnis</strong>, die wir seit 2008 am Markt tätig sind. Wir bieten präzise Kaufpreiseinschätzungen und tiefgehende Marktanalysen. Wir identifizieren Optimierungspotenziale – von Neubauentwicklungen bis hin zu Modernisierungen und Nachverdichtungen – und erarbeiten individuelle Strategien, die Ihr Objekt bestmöglich positionieren. Unsere <strong>Expertise</strong> sichert Ihnen fundierte Entscheidungen und maßgeschneiderte Lösungen.</p>
                                             </div>
                                           </div>
                                         </div>
@@ -554,7 +561,7 @@ margin: 0rem !important;
                                         <div class="career3_list">
                                           <div class="career3_item">
                                             <div class="max-width-large">
-                                              <p>Mit hochwertigen Exposés, professionellen Fotografien und zielgerichteten Texten setzen wir Ihre Immobilie ins rechte Licht. Dank unseres weitreichenden Kundenportfolios - von Family Offices über Fonds bis zu institutionellen und privaten Investoren - erreichen Sie den passenden Kunden, diskret und effizient.</p>
+                                              <p>Unsere <strong>Professionalität</strong> zeigt sich in hochwertigen Exposés, professionellen Fotografien und zielgerichteten Texten, die Ihre Immobilie optimal präsentieren. Dank unseres <strong>großen Kundenstamms</strong> – von Family Offices über Fonds bis zu institutionellen und privaten Investoren – erreichen Sie den passenden Kunden, diskret und effizient. Wir garantieren eine zielgerichtete Vermarktung, die auf Vertrauen basiert.</p>
                                             </div>
                                           </div>
                                         </div>
@@ -573,7 +580,7 @@ margin: 0rem !important;
                                         <div class="career3_list">
                                           <div class="career3_item">
                                             <div class="max-width-large">
-                                              <p>Als etablierter Immobilienpartner koordinieren wir alle Prozessschritte von der ersten Besichtigung bis zur finalen Vertragsunterzeichnung. Ein persönlicher Ansprechpartner steuert sämtliche Abläufe, sorgt für Transparenz und garantiert einen reibungslosen Ablauf.</p>
+                                              <p>Als etablierter Immobilienpartner koordinieren wir alle Prozessschritte von der ersten Besichtigung bis zur finalen Vertragsunterzeichnung. Unsere <strong>digitalisierten Arbeitsprozesse</strong> ermöglichen eine schnelle und transparente Bearbeitung von Geschäftsfällen. Ein persönlicher Ansprechpartner steuert sämtliche Abläufe, sorgt für Transparenz und garantiert einen reibungslosen und <strong>effizienten</strong> Ablauf.</p>
                                             </div>
                                           </div>
                                         </div>
@@ -592,7 +599,7 @@ margin: 0rem !important;
                                         <div class="career3_list">
                                           <div class="career3_item">
                                             <div class="max-width-large">
-                                              <p>Mit einem qualifizierten exklusiv Mandat sichern Sie sich unser umfassendes Leistungsversprechen. Unsere Services sind für Sie als Verkäufer komplett kostenfrei - Sie sparen Zeit und Ressourcen, während wir für maximale Wertschöpfung und diskrete Transaktionen sorgen.<br></p>
+                                              <p>Mit einem qualifizierten exklusiv Mandat sichern Sie sich unser umfassendes Leistungsversprechen. Unser <strong>effizientes Team</strong> aus hochmotivierten und kompetenten Mitarbeitern arbeitet mit Ihnen Hand in Hand. Unsere Services sind für Sie als Verkäufer komplett kostenfrei – Sie sparen Zeit und Ressourcen, während wir für maximale Wertschöpfung und diskrete Transaktionen sorgen. Wir bauen auf <strong>Vertrauen</strong> und liefern Ergebnisse.</p>
                                             </div>
                                           </div>
                                         </div>
@@ -617,7 +624,7 @@ margin: 0rem !important;
                             <div class="margin-bottom margin-small">
                               <h3 class="heading-style-h3">Gesundheits- und Pflegeimmobilien</h3>
                             </div>
-                            <p>Unsere Kernkompetenz liegen im Bereich Gesundheits- und Pflegeimmobilien (Health Care). Wir begleiten beim Erwerb/Verkauf von sozialen Investmentimmobilien und entwickeln strategische, effektive Nutzungs- und Weiternutzungskonzepte. Wir haben uns über die Jahre profunde Kenntnisse für dieses einzigartige, renditenstarke und sichere Investmentfeld erarbeitet. Regelmäßige Fortbildungen sorgen für ein stets aktuelles, auf die Marktlage anwendbares Know-How.</p>
+                            <p>Wir bieten Ihnen umfassende Beratung beim Erwerb und Verkauf von Sozial- und Pflegeimmobilien. Unser bewährter Beratungsansatz basiert auf detaillierten Marktanalysen, fundierten Standortbewertungen und individuellen Vermarktungsstrategien. Dank unserer <strong>umfassenden Marktkenntnis</strong> und <strong>Expertise</strong> begleiten wir Sie von der ersten Bewertung bis zum erfolgreichen Abschluss, um Ihre Transaktion effizient und gewinnbringend zu gestalten.</p>
                           </div>
                           <div class="margin-top margin-medium">
                             <div class="button-group">
@@ -634,7 +641,7 @@ margin: 0rem !important;
                                 <div class="w-layout-grid career3_content">
                                   <div class="career3_content-left">
                                     <div class="margin-bottom margin-xsmall">
-                                      <div class="text-style-tagline">Advisory</div>
+                                      <div class="text-style-tagline">Beratung</div>
                                     </div>
                                     <div class="margin-bottom margin-small">
                                       <h2 class="heading-style-h2">Strategische Beratung für Sozial- und Pflegeimmobilien</h2>
@@ -657,7 +664,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;">Ihr Weg zu erfolgreichen Transaktionen</div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;">Ihr Weg zu erfolgreichen Transaktionen</div>
                                                 </div>
                                               </div>
                                             </div>
@@ -683,7 +690,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;">Grundstücke mit strategischem Weitblick</div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;">Grundstücke mit strategischem Weitblick</div>
                                                 </div>
                                               </div>
                                             </div>
@@ -709,7 +716,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;">Standortanalyse als Schlüssel zum Erfolg</div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;">Standortanalyse als Schlüssel zum Erfolg</div>
                                                 </div>
                                               </div>
                                             </div>
@@ -735,7 +742,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;">Fundierte Bewertung für klare Entscheidungen</div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;">Fundierte Bewertung für klare Entscheidungen</div>
                                                 </div>
                                               </div>
                                             </div>
@@ -761,7 +768,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;"><strong>Strategische Beratung für Unternehmensverkäufe</strong></div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;"><strong>Strategische Beratung für Unternehmensverkäufe</strong></div>
                                                 </div>
                                               </div>
                                             </div>
@@ -787,7 +794,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;"><strong>Passgenaue Betreiberlösungen für langfristigen Erfolg</strong></div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;"><strong>Passgenaue Betreiberlösungen für langfristigen Erfolg</strong></div>
                                                 </div>
                                               </div>
                                             </div>
@@ -813,7 +820,7 @@ margin: 0rem !important;
                                             <div class="margin-bottom margin-small">
                                               <div class="career3_title-wrapper">
                                                 <div class="career3_title-heading">
-                                                  <div class="heading-style-h6" style="color: #01253B;">Gutachten als solide Entscheidungsbasis</div>
+                                                  <div class="heading-style-h6" style="color: #01253B; font-weight: 600;">Gutachten als solide Entscheidungsbasis</div>
                                                 </div>
                                               </div>
                                             </div>
@@ -1221,12 +1228,50 @@ margin: 0rem !important;
 
       }, 500); // Timeout to ensure Webflow scripts are loaded
 
+      // --- NEU: Exklusiv-Akkordeon für "Residential" und "Healthcare" ---
+      function setupExclusiveAccordion(containerSelector) {
+        const container = document.querySelector(containerSelector);
+        if (container) {
+          // Finde den initial geöffneten Trigger als Startzustand (falls vorhanden).
+          let activeTrigger = container.querySelector('.career3_job-department[aria-expanded="true"]');
+
+          // Event-Delegation für eine saubere und effiziente Lösung.
+          container.addEventListener('click', (event) => {
+            const clickedTrigger = event.target.closest('.career3_job-department');
+            if (!clickedTrigger) return;
+
+            // Wenn ein anderer Trigger aktiv war, schließe ihn.
+            if (activeTrigger && activeTrigger !== clickedTrigger) {
+              activeTrigger.click();
+            }
+
+            // Aktualisiere den Zustand: Wenn der geklickte Trigger der aktive war,
+            // wird er geschlossen, also ist kein Trigger mehr aktiv. Ansonsten wird der
+            // neue Trigger zum aktiven.
+            activeTrigger = (activeTrigger === clickedTrigger) ? null : clickedTrigger;
+          });
+        }
+      }
+
+      // Wende die Logik auf beide Akkordeon-Container an.
+      setupExclusiveAccordion('[data-w-tab="Tab 1"] .career3_content-right');
+      setupExclusiveAccordion('[data-w-tab="Tab 2"] .career3_content-right');
+
       // --- NEU: Case Study Sektion basierend auf Tab umschalten ---
       const tabLinks = document.querySelectorAll('.investment-advisory_layout_tab-link');
+      const tabsMenu = document.querySelector('.investment-advisory_layout_tabs-menu');
       const projectShowcaseSections = document.querySelectorAll('.project-showcase-section');
       const showcaseMap = [ // Map tab index to section ID suffix
           'residential', 'healthcare', 'commercial', 'grundstuecke', 'offmarket'
       ];
+
+      function updateActiveLine() {
+        const activeTab = tabsMenu.querySelector('.w--current');
+        if (activeTab && tabsMenu) {
+            tabsMenu.style.setProperty('--line-left', `${activeTab.offsetLeft}px`);
+            tabsMenu.style.setProperty('--line-width', `${activeTab.offsetWidth}px`);
+        }
+      }
 
       function showProjectShowcase(tabIndex) {
           projectShowcaseSections.forEach(section => {
@@ -1249,6 +1294,8 @@ margin: 0rem !important;
         }
       });
       showProjectShowcase(initialTabIndex);
+      // Use a small timeout to ensure layout is calculated before positioning the line
+      setTimeout(updateActiveLine, 100);
 
 
       // Add click listeners to tabs
@@ -1257,9 +1304,30 @@ margin: 0rem !important;
               // Find the index of the clicked tab link again, just in case order changes
               const clickedIndex = Array.from(tabLinks).indexOf(event.currentTarget);
               // Webflow's tab switching might take a moment, use setTimeout
-              setTimeout(() => showProjectShowcase(clickedIndex), 50);
+              setTimeout(() => {
+                showProjectShowcase(clickedIndex);
+                updateActiveLine();
+
+                // NEU: Öffnet das erste Akkordeon im "Healthcare"-Tab (Index 1)
+                if (clickedIndex === 1) { 
+                  const healthcarePane = document.querySelector('.w-tab-pane[data-w-tab="Tab 2"]');
+                  if (healthcarePane) {
+                    const firstAccordion = healthcarePane.querySelector('.career3_job-department');
+                    if (firstAccordion) {
+                      const listWrapper = firstAccordion.nextElementSibling;
+                      // Nur klicken, wenn es geschlossen ist, um ein erneutes Schließen zu verhindern.
+                      if (listWrapper && (listWrapper.style.height === '0px' || listWrapper.style.height === '')) {
+                        firstAccordion.click();
+                      }
+                    }
+                  }
+                }
+              }, 50);
           });
       });
+      
+      // Update line on window resize
+      window.addEventListener('resize', updateActiveLine);
 
     });
   </script>

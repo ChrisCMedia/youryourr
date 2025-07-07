@@ -66,158 +66,126 @@
   }
   /* END Styles for Why Us List */
 
-  /* START: New Styles for Stage & Navigation Services Layout */
-    .section_marketing_stage_nav_services {
-      /* padding: 2rem 0; */ /* Handled by inner padding-global */
-    }
+  /* START: New Services Grid Layout */
+  .services-grid {
+      display: flex; /* Geändert von grid zu flex für eine einzelne Reihe */
+      gap: 1.5rem; /* Abstand zwischen den Karten */
+      padding-top: 2rem;
+      overflow-x: auto; /* Horizontales Scrollen auf kleinen Bildschirmen ermöglichen */
+      padding-bottom: 1.5rem; /* Platz, damit der Schatten nicht abgeschnitten wird */
+      -webkit-overflow-scrolling: touch; /* Flüssiges Scrollen auf iOS */
+      scrollbar-width: none; /* Scrollleiste für Firefox ausblenden */
+      -ms-overflow-style: none;  /* Scrollleiste für IE und Edge ausblenden */
+  }
+  /* Scrollleiste für Webkit-Browser (Chrome, Safari) ausblenden */
+  .services-grid::-webkit-scrollbar {
+      display: none;
+  }
 
-    .stage-nav-layout {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem; /* Space between stage and nav bar */
-    }
-
-    #service-main-stage {
-      width: 100%;
-      max-width: 700px; /* Max width of the main display area */
-      height: 525px; /* Fixed height to prevent jumping and accommodate content */
-      padding: 2rem;
-      background-color: #ffffff; /* Optional: background for the stage */
+  .service-card {
+      flex: 0 0 300px; /* Jede Karte hat eine feste Breite und schrumpft nicht */
+      background-color: #ffffff;
       border-radius: 12px;
-      /* box-shadow: 0 10px 30px rgba(0,0,0,0.08); */ /* Optional: subtle shadow */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.9s ease-in-out, transform 0.9s ease-in-out; /* Smoother transition */
-    }
-    #service-main-stage.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+      padding: 2rem;
+      text-align: left; /* Für ein professionelleres Erscheinungsbild linksbündig ausgerichtet */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      position: relative;
+  }
 
-    #service-main-stage .main-stage-animation-container {
-      width: 300px; /* Size for the main Lottie animation */
-      height: 300px;
+  .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(10, 37, 62, 0.1);
+      background-color: #fdfcfa; /* Ein sehr heller Hauch der Markenfarbe */
+  }
+
+  .service-card_icon-wrapper {
+      width: 50px;
+      height: 50px;
       margin-bottom: 1.5rem;
-    }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f4f8; /* Heller, neutraler Hintergrund */
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+  }
 
-    #service-main-stage dotlottie-player {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+  .service-card:hover .service-card_icon-wrapper {
+      background-color: var(--base-color-brand--main); /* Wechselt zur Markenfarbe bei Hover */
+  }
 
-    #service-main-stage .main-stage-title {
-      font-size: 2rem; /* Prominent title */
+  .service-card_icon-wrapper img {
+      width: 28px;
+      height: 28px;
+      /* CSS-Filter, um die SVGs einheitlich einzufärben */
+      filter: invert(15%) sepia(21%) saturate(1575%) hue-rotate(180deg) brightness(95%) contrast(90%);
+      transition: filter 0.3s ease;
+  }
+
+  .service-card:hover .service-card_icon-wrapper img {
+      filter: brightness(0) invert(1); /* Macht das Icon bei Hover weiss */
+  }
+
+  .service-card_title {
+      font-family: 'Playfair Display', serif;
+      color: #01253B; /* Dunkles Blau von der Seite */
+      font-size: 1.3rem;
       font-weight: 700;
-      color: #222; /* Darker title color */
-      margin-bottom: 1rem;
-    }
+      margin-bottom: 0.75rem;
+      min-height: 0; /* Feste Höhe entfernt, um flexibler zu sein */
+  }
 
-    #service-main-stage .main-stage-description {
-      font-size: 1.1rem;
+  .service-card_description {
+      font-size: 0.95rem;
       line-height: 1.6;
       color: #444;
-      max-width: 600px; /* Control text width */
-    }
+  }
 
-    #services-navigation-bar {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; /* Align items to top for consistent baseline */
-      gap: 1rem;
-      flex-wrap: wrap; /* Allow wrapping on very small screens */
-      padding: 1rem;
-      width: 100%;
-      max-width: 1000px; /* Max width of the nav bar */
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0.75rem;
-      border: 2px solid transparent;
-      border-radius: 8px;
+  /* NEU: Styling für den Scroll-Button */
+  .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      right: 1.5rem; /* Abstand vom rechten Rand */
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-      width: calc(20% - 1rem); /* Aim for 5 items, considering gap */
-      min-width: 120px; /* Prevent extreme squishing */
-    }
-
-    .nav-item:hover {
-      background-color: #f0f0f0;
-      transform: translateY(-3px);
-    }
-
-    .nav-item.is-active-nav-item {
-      border-color: #c8a45c; /* Highlight color for active nav item */
-      background-color: #fff5e6; /* Light background for active nav item */
-    }
-
-    .nav-item .nav-animation-container {
-      width: 80px; /* Size for small Lottie in nav */
-      height: 80px;
-      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    
-    .nav-item .nav-animation-container .black-dot-placeholder {
-        /* Replaced by step number */
-        display: none; 
-    }
+      font-size: 28px;
+      font-weight: 300;
+      color: #333;
+      z-index: 10;
+      transition: all 0.3s ease;
+      opacity: 1;
+  }
 
-    .nav-item .nav-animation-container .nav-item-step-number {
-      font-size: 1.8rem; /* Size for step number */
-      font-weight: 700;
-      color: #555; /* Color for step number */
-      display: flex; 
-      align-items: center;
-      justify-content: center;
-      width: 100%;   
-      height: 100%;  
-    }
+  .scroll-arrow:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
 
-    .nav-item .nav-animation-container dotlottie-player {
-        display: none; /* Hide Lottie by default in nav */
-    }
+  /* NEU: Spezifisches Styling für linken/rechten Pfeil */
+  .scroll-arrow.is-left {
+      left: 1.5rem; /* Am linken Rand positionieren */
+      right: auto;
+  }
 
-    /* Show Lottie and hide dot for active nav item, or on hover */
-    .nav-item.is-active-nav-item .nav-animation-container dotlottie-player,
-    .nav-item:hover .nav-animation-container dotlottie-player {
-      display: block;
-      filter: grayscale(0%); /* Full color on hover/active */
-    }
-    .nav-item.is-active-nav-item .nav-animation-container .black-dot-placeholder,
-    .nav-item:hover .nav-animation-container .black-dot-placeholder,
-    .nav-item.is-active-nav-item .nav-animation-container .nav-item-step-number, /* Hide number when Lottie is active */
-    .nav-item:hover .nav-animation-container .nav-item-step-number { /* Hide number on hover when Lottie shows */
-      display: none;
-    }
-    /* For non-active, non-hovered nav items, Lottie is grayscale if we choose to show it */
-    /* 
-    .nav-item:not(.is-active-nav-item):not(:hover) .nav-animation-container dotlottie-player {
-        filter: grayscale(100%); 
-    }
-    */
-
-    .nav-item .nav-title {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #555;
-    }
-    .nav-item.is-active-nav-item .nav-title {
-        color: #c8a45c;
-    }
-
-   /* END: New Styles for Stage & Navigation Services Layout */
+  .scroll-arrow.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%) scale(0.8);
+  }
+  /* END: New Services Grid Layout */
 
   /* START: Refine Process & Additional Services Design */
   .section_process_services,
@@ -358,6 +326,12 @@
   }
   /* END: Slide in from Left Animation */
 
+  /* FIX für kombinierte Animationsklassen auf einem Element */
+  .animate-on-scroll.animate-slide-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+  }
+
   /* START: Two-Column Showcase Styling - REVISED */
   .digital-print-showcase-grid {
     display: grid;
@@ -446,6 +420,88 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.07); 
   }
   /* END: Two-Column Showcase Styling - REVISED */
+
+  /* START: MacBook Scroll Animation Styling */
+  .section_scroll_sequence {
+    position: relative;
+    /* overflow: hidden; */ /* Entfernt! Diese Eigenschaft hat das sticky-Verhalten verhindert. */
+  }
+
+  .scroll-sequence-sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Der Container klebt für eine Bildschirmhöhe */
+    width: 100%;
+    overflow: hidden; /* Stellt sicher, dass die Canvas nicht überläuft */
+    /* NEU: Flexbox-Layout, um Überschrift und Canvas zu positionieren */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Inhalte oben ausrichten */
+    padding-top: 2rem; /* Abstand vom oberen Bildschirmrand */
+  }
+
+  .scroll-sequence-canvas {
+    width: 100%;
+    flex-grow: 1; /* Canvas füllt den restlichen vertikalen Raum */
+    min-height: 0; /* Wichtiger Fix für Flexbox-Verhalten */
+  }
+  
+  .scroll-sequence-content {
+    position: relative;
+    width: 100%;
+    /* Die Höhe bestimmt die "Scroll-Dauer" der Animation. */
+    height: 250vh; /* Deutlich reduziert, um Leerraum zu vermeiden */
+  }
+
+  .scroll-sequence-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    max-width: 600px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .scroll-sequence-text-overlay.is-visible {
+    opacity: 1;
+  }
+
+  /* NEU: Styling für die seitlich einschwebende Textbox */
+  .slide-in-text-box {
+      position: absolute;
+      top: 50%;
+      right: 5%; /* Positionierung am rechten Rand */
+      transform: translateY(-50%) translateX(120%); /* Startposition ausserhalb des Bildschirms */
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+      max-width: 380px;
+      color: #01253B;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .slide-in-text-box.is-visible {
+      transform: translateY(-50%) translateX(0); /* Endposition im Bild */
+      opacity: 1;
+      visibility: visible;
+  }
+
+  .slide-in-text-box h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--base-color-brand--main);
+      margin-bottom: 0.5rem;
+  }
+  /* END: MacBook Scroll Animation Styling */
 
   </style>
   <script src="js/menu-fix.js" type="text/javascript"></script>
@@ -601,7 +657,7 @@
 
        <!-- START: New Stage & Navigation Services Section -->
        <section class="section_marketing_stage_nav_services animate-fade-in animate-on-scroll">
-         <div class="padding-global">
+         <div class="padding-global" style="position: relative;">
            <div class="container-large">
              <div class="padding-section-large" style="padding-top: 3rem; padding-bottom: 3rem;">
                 <div class="margin-bottom margin-xlarge">
@@ -616,12 +672,14 @@
                 </div>
 
                <div class="stage-nav-layout">
-                 <div id="service-main-stage"></div>
-                 <div id="services-navigation-bar"></div>
+                  <!-- JS wird diesen Bereich mit dem neuen Grid füllen. -->
                </div>
 
              </div>
            </div>
+           <!-- NEU: Scroll-Buttons für links und rechts -->
+           <button id="scroll-left-button" class="scroll-arrow is-left is-hidden" aria-label="Nach links scrollen">‹</button>
+           <button id="scroll-right-button" class="scroll-arrow is-hidden" aria-label="Nach rechts scrollen">›</button>
          </div>
        </section>
 
@@ -661,6 +719,31 @@
        </section>
        <!-- END: Digital Excellence Showcase Section -->
 
+       <!-- START: MacBook Scroll Animation Section -->
+       <section class="section_scroll_sequence animate-on-scroll animate-slide-in-left">
+        <div class="scroll-sequence-content">
+          <div class="scroll-sequence-sticky-container">
+            <!-- ÜBERSCHRIFT IST JETZT INNERHALB DES STICKY-CONTAINERS -->
+            <div class="padding-global" style="padding-top: 0rem; padding-bottom: 0rem; flex-shrink: 0;">
+              <div class="container-large">
+                <div class="text-align-center margin-bottom-medium">
+                  <h2 class="heading-style-h2" style="color: var(--base-color-brand--main); font-family: 'Playfair Display', serif;">Eine neue Dimension der Präsentation</h2>
+                </div>
+              </div>
+            </div>
+            <!-- CANVAS FOLGT DER ÜBERSCHRIFT -->
+            <canvas id="macbook-scroll-canvas" class="scroll-sequence-canvas"></canvas>
+
+            <!-- NEU: Textbox, die am Ende erscheint -->
+            <div id="landingpage-text-box" class="slide-in-text-box">
+              <h4>Professionelle Projektwebsites</h4>
+              <p>Wir erstellen für Sie mobiloptimierte, DSGVO-konforme Landingpages mit klarem Fokus auf Conversion – modern, informativ und nutzerfreundlich, um Ihr Projekt perfekt zu präsentieren.</p>
+            </div>
+          </div>
+        </div>
+       </section>
+       <!-- END: MacBook Scroll Animation Section -->
+
        <!-- START: Why Us Icon List Section -->
        <section class="section_marketing_why_us animate-fade-in animate-on-scroll">
         <div class="padding-global">
@@ -676,7 +759,7 @@
                        <img src="images/search_insights_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Fundierte Marktkenntnis" style="width: 100%; height: 100%;">
                      </div>
                      <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
-                         <h4 class="heading-style-h4">Fundierte Marktkenntnis</h4>
+                         <h4 class="heading-style-h6">Fundierte Marktkenntnis</h4>
                          <p class="text-size-medium">Wir kennen den Immobilienmarkt und verstehen seine Dynamiken.</p>
                      </div>
                   </div>
@@ -685,7 +768,7 @@
                          <img src="images/real_estate_agent_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Immobilienaffines Kreativteam" style="width: 100%; height: 100%;">
                        </div>
                      <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
-                       <h4 class="heading-style-h4">Immobilienaffines Kreativteam</h4>
+                       <h4 class="heading-style-h6">Immobilienaffines Kreativteam</h4>
                        <p class="text-size-medium">Unser Team spricht die Sprache der Immobilien und der Kreativität.</p>
                      </div>
                   </div>
@@ -694,7 +777,7 @@
                          <img src="images/diversity_3_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Starke Netzwerke" style="width: 100%; height: 100%;">
                        </div>
                      <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
-                       <h4 class="heading-style-h4">Starke Netzwerke</h4>
+                       <h4 class="heading-style-h6">Starke Netzwerke</h4>
                        <p class="text-size-medium">Profitieren Sie von unseren Kontakten in der Projektentwicklung.</p>
                      </div>
                   </div>
@@ -703,7 +786,7 @@
                          <img src="images/editor_choice_100dp_01253B_FILL0_wght400_GRAD0_opsz48.svg" alt="Höchste Ansprüche" style="width: 100%; height: 100%;">
                        </div>
                      <div class="marketing_why-us_item-text-wrapper" style="text-align: center;">
-                       <h4 class="heading-style-h4">Höchste Ansprüche</h4>
+                       <h4 class="heading-style-h6">Höchste Ansprüche</h4>
                        <p class="text-size-medium">Wir setzen auf Qualität und Wirkung für Ihr Marketing.</p>
                      </div>
                   </div>
@@ -752,162 +835,234 @@
    <script src="js/animation.js" type="text/javascript"></script>
    <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const mainStage = document.getElementById('service-main-stage');
-      const navBar = document.getElementById('services-navigation-bar');
-      let currentActiveIndex = 0;
+      const container = document.querySelector('.section_marketing_stage_nav_services .padding-global');
+      const gridContainer = document.querySelector('.stage-nav-layout'); 
+      if (!gridContainer || !container) return;
 
-      const stepsData = [
-        {
-          id: 'branding',
-          lottieSrc: "images/Animation - 1748207787238.json",
-          title: "1 | Branding und Identität",
-          description: "Vom Projektname über das Corporate Design bis zur Markenpositionierung – wir geben Ihrer Immobilie ein klares und wiedererkennbares Profil."
-        },
-        {
-          id: 'campaign',
-          lottieSrc: "images/optimized-lottie-2.json",
-          title: "2 | Online-Marketing und Kampagnen",
-          description: "Digitale Reichweite und Leads durch zielgerichtete SEO, Social Media, Google Ads und E-Mail-Kampagnen – individuell auf Ihre Zielgruppen abgestimmt."
-        },
-        {
-          id: 'presentation',
-          lottieSrc: "https://lottie.host/7b2d3470-af03-483f-9ac3-2fa0dd0cfb96/RzEePoIbqB.lottie",
-          title: "3 | Visualisierung und Präsentation",
-          description: "Professionelle 3D-Renderings, Animationen, Videos, Drohnenaufnahmen und hochwertige Exposés zur emotionalen Inszenierung Ihrer Immobilien."
-        },
-        {
-          id: 'web',
-          lottieSrc: "images/optimized-lottie-4.json",
-          title: "4 | Projektwebsites und Landingpages",
-          description: "Mobiloptimierte, DSGVO-konforme Seiten mit klarem Fokus auf Conversion – modern, informativ und nutzerfreundlich."
-        },
-        {
-          id: 'reporting',
-          lottieSrc: "images/optimized-lottie-5.json",
-          title: "5 | Reporting und Optimierung",
-          description: "Regelmäßige Auswertungen Ihrer Kampagnen auf Basis klar definierter KPIs – transparent, datengestützt und zielorientiert."
-        }
+      // Button-Logik
+      const scrollLeftButton = document.getElementById('scroll-left-button');
+      const scrollRightButton = document.getElementById('scroll-right-button');
+      
+      gridContainer.innerHTML = ''; // Leert den alten Inhalt
+      gridContainer.className = 'services-grid'; // Weist die neue Grid-Klasse zu
+
+      const servicesData = [
+        { icon: 'images/branding.svg', title: "Branding und Identität", description: "Vom Projektname über das Corporate Design bis zur Markenpositionierung – wir geben Ihrer Immobilie ein klares und wiedererkennbares Profil." },
+        { icon: 'images/campaign.svg', title: "Online-Marketing und Kampagnen", description: "Digitale Reichweite und Leads durch zielgerichtete SEO, Social Media, Google Ads und E-Mail-Kampagnen – individuell auf Ihre Zielgruppen abgestimmt." },
+        { icon: 'images/presentation.svg', title: "Visualisierung und Präsentation", description: "Professionelle 3D-Renderings, Animationen, Videos, Drohnenaufnahmen und hochwertige Exposés zur emotionalen Inszenierung Ihrer Immobilien." },
+        { icon: 'images/design_services.svg', title: "Projektwebsites und Landingpages", description: "Mobiloptimierte, DSGVO-konforme Seiten mit klarem Fokus auf Conversion – modern, informativ und nutzerfreundlich." },
+        { icon: 'images/analytics.svg', title: "Reporting und Optimierung", description: "Regelmäßige Auswertungen Ihrer Kampagnen auf Basis klar definierter KPIs – transparent, datengestützt und zielorientiert." }
       ];
 
-      function renderMainStage(stepData) {
-        if (!mainStage) return;
+      servicesData.forEach((service, index) => {
+        const card = document.createElement('div');
+        card.className = 'service-card';
 
-        function setupNewContent() {
-            mainStage.innerHTML = ''; // Clear previous content
-            
-            const animationContainer = document.createElement('div');
-            animationContainer.className = 'main-stage-animation-container';
-            const player = document.createElement('dotlottie-player');
-            player.setAttribute('src', stepData.lottieSrc);
-            player.setAttribute('background', 'transparent');
-            player.setAttribute('speed', '1');
-            player.setAttribute('loop', '');
-            player.setAttribute('autoplay', '');
-            animationContainer.appendChild(player);
+        const iconWrapper = document.createElement('div');
+        iconWrapper.className = 'service-card_icon-wrapper';
+        const iconImg = document.createElement('img');
+        iconImg.src = service.icon;
+        iconImg.alt = service.title;
+        iconWrapper.appendChild(iconImg);
+        
+        const titleElement = document.createElement('h4');
+        titleElement.className = 'service-card_title';
+        titleElement.textContent = service.title;
 
-            const titleElement = document.createElement('h4');
-            titleElement.className = 'main-stage-title';
-            titleElement.textContent = stepData.title;
+        const descriptionElement = document.createElement('p');
+        descriptionElement.className = 'service-card_description';
+        descriptionElement.textContent = service.description;
 
-            const descriptionElement = document.createElement('p');
-            descriptionElement.className = 'main-stage-description';
-            descriptionElement.textContent = stepData.description;
+        card.appendChild(iconWrapper);
+        card.appendChild(titleElement);
+        card.appendChild(descriptionElement);
 
-            mainStage.appendChild(animationContainer);
-            mainStage.appendChild(titleElement);
-            mainStage.appendChild(descriptionElement);
+        gridContainer.appendChild(card);
+      });
 
-            // Trigger fade-in of new content
-            // Using double requestAnimationFrame for a more robust reflow before adding class
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    mainStage.classList.add('visible');
-                });
-            });
-        }
-
-        if (mainStage.classList.contains('visible')) {
-            mainStage.classList.remove('visible');
-            mainStage.addEventListener('transitionend', function handler() {
-                mainStage.removeEventListener('transitionend', handler);
-                setupNewContent();
-            }, { once: true });
+      // NEUE LOGIK für die Scroll-Buttons
+      const checkScrollability = () => {
+        if (!gridContainer || !scrollLeftButton || !scrollRightButton) return;
+        const isScrollable = gridContainer.scrollWidth > gridContainer.clientWidth;
+        
+        // Rechte Button-Logik
+        const isAtEnd = gridContainer.scrollLeft + gridContainer.clientWidth >= gridContainer.scrollWidth - 10;
+        if (isScrollable && !isAtEnd) {
+          scrollRightButton.classList.remove('is-hidden');
         } else {
-            // Initial load or if stage was hidden for some reason
-            setupNewContent();
+          scrollRightButton.classList.add('is-hidden');
         }
-      }
 
-      function renderNavigationBar(activeIndex) {
-        if (!navBar) return;
-        navBar.innerHTML = ''; // Clear previous nav items
+        // Linke Button-Logik
+        const isAtStart = gridContainer.scrollLeft < 10;
+         if (isScrollable && !isAtStart) {
+          scrollLeftButton.classList.remove('is-hidden');
+        } else {
+          scrollLeftButton.classList.add('is-hidden');
+        }
+      };
 
-        stepsData.forEach((stepData, index) => {
-          const navItem = document.createElement('div');
-          navItem.className = 'nav-item';
-          navItem.dataset.index = index;
-
-          const animContainer = document.createElement('div');
-          animContainer.className = 'nav-animation-container';
-          
-          const player = document.createElement('dotlottie-player');
-          player.setAttribute('src', stepData.lottieSrc);
-          player.setAttribute('background', 'transparent');
-          player.setAttribute('speed', '1');
-          // player.setAttribute('loop', ''); // No loop for nav items generally
-          animContainer.appendChild(player);
-
-          const stepNumberElement = document.createElement('span');
-          stepNumberElement.className = 'nav-item-step-number';
-          stepNumberElement.textContent = index + 1;
-          animContainer.appendChild(stepNumberElement);
-
-          navItem.appendChild(animContainer);
-
-          const title = document.createElement('p');
-          title.className = 'nav-title';
-          
-          // Originaler Titel aus stepsData (z.B. "1 | Branding & Identität")
-          const originalTitle = stepData.title; 
-          // Entferne "X | " Präfix für die Navigationsleiste
-          const pipeIndex = originalTitle.indexOf(' | ');
-          const displayTitleInNav = pipeIndex !== -1 ? originalTitle.substring(pipeIndex + 3) : originalTitle;
-          title.textContent = displayTitleInNav; // Zeige nur den reinen Titel an
-          
-          navItem.appendChild(title);
-
-          if (index === activeIndex) {
-            navItem.classList.add('is-active-nav-item');
-            // player.play(); // Optionally play small Lottie in active nav item
-          }
-
-          // For steps 1 (index 0) and 4 (index 3), seek to a slightly later frame
-          // to improve their initial appearance in the nav bar on hover.
-          if (index === 0 || index === 3) {
-            player.addEventListener('ready', () => {
-              player.seek(100); // Seek to frame 100 (0-indexed)
-              player.pause(); // Ensure it remains paused
-            }, { once: true }); // Ensure this listener is added only once
-          }
-
-          navItem.addEventListener('click', function() {
-            const clickedIndex = parseInt(this.dataset.index);
-            updateFullDisplay(clickedIndex);
-          });
-          navBar.appendChild(navItem);
+      scrollRightButton.addEventListener('click', () => {
+        gridContainer.scrollTo({
+          left: gridContainer.scrollWidth,
+          behavior: 'smooth'
         });
-      }
+      });
 
-      function updateFullDisplay(activeIndex) {
-        currentActiveIndex = activeIndex;
-        renderMainStage(stepsData[currentActiveIndex]);
-        renderNavigationBar(currentActiveIndex);
-      }
+      scrollLeftButton.addEventListener('click', () => {
+        gridContainer.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
+      });
 
-      // Initial Load
-      if (stepsData.length > 0) {
-        updateFullDisplay(0); // Display step 1 (index 0) by default
-      }
+      gridContainer.addEventListener('scroll', checkScrollability);
+      window.addEventListener('resize', checkScrollability);
+      
+      // Kurze Verzögerung, um sicherzustellen, dass das DOM vollständig gerendert ist
+      setTimeout(checkScrollability, 100);
+    });
+   </script>
+   <script>
+      // SCRIPT FOR MACBOOK SCROLL ANIMATION
+      document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('macbook-scroll-canvas');
+        if (!canvas) return;
+
+        // Helfersfunktion, um die Auflösung des Canvas an hochauflösende Bildschirme anzupassen
+        function setupCanvas(canvas) {
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            return ctx;
+        }
+
+        const context = canvas.getContext('2d');
+        const scrollContent = document.querySelector('.scroll-sequence-content');
+        
+        const frameCount = 59;
+        const imageFilePrefix = 'images/macbook-sequence/';
+        const imageFileSuffix = '.png';
+
+        const currentFrame = index => (
+          `${imageFilePrefix}${String(index).padStart(3, '0')}${imageFileSuffix}`
+        );
+
+        const images = [];
+        const imagePromises = [];
+
+        for (let i = 0; i < frameCount; i++) {
+          const img = new Image();
+          images.push(img);
+          const promise = new Promise(resolve => {
+            img.onload = resolve;
+          });
+          imagePromises.push(promise);
+          img.src = currentFrame(i);
+        }
+
+        // Text Overlays - ALLES ENTFERNT
+        const textOverlays = [];
+
+        Promise.all(imagePromises).then(() => {
+          // Initial render
+          renderFrame(0, context);
+
+          window.addEventListener('scroll', handleScroll);
+        });
+        
+        function handleResize() {
+          // Canvas-Auflösung neu einstellen und Kontext neu abrufen
+          const ctx = setupCanvas(canvas);
+          // Wichtig: Da der Kontext neu erstellt wurde, müssen wir ihn für die renderFrame-Funktion verfügbar machen.
+          // In diesem Fall ist es einfacher, renderFrame direkt mit dem neuen Kontext aufzurufen.
+          renderFrame(getFrameIndexForScroll(), ctx); 
+        }
+
+        function getFrameIndexForScroll() {
+            const scrollFraction = getScrollFraction();
+            return Math.min(
+              frameCount - 1,
+              Math.floor(scrollFraction * frameCount)
+            );
+        }
+
+        // Helfersfunktion, um den aktuellen Scroll-Fortschritt (0 bis 1) zu erhalten
+        function getScrollFraction() {
+            const rect = scrollContent.getBoundingClientRect();
+            const scrollTop = -rect.top;
+            const scrollableHeight = scrollContent.scrollHeight - window.innerHeight;
+            if (scrollableHeight <= 0) return 0;
+            let scrollFraction = scrollTop / scrollableHeight;
+            return Math.min(1, Math.max(0, scrollFraction));
+        }
+
+        function handleScroll() {
+          requestAnimationFrame(() => {
+            const frameIndex = getFrameIndexForScroll();
+            renderFrame(frameIndex, context);
+
+            // Logik zum Einblenden der Textbox wiederhergestellt
+            const textBox = document.getElementById('landingpage-text-box');
+            if (textBox) {
+                const scrollFraction = getScrollFraction();
+                if (scrollFraction > 0.5) { // Trigger bei 50% des Scroll-Wegs (vorher 0.9)
+                    textBox.classList.add('is-visible');
+                } else {
+                    textBox.classList.remove('is-visible');
+                }
+            }
+          });
+        }
+        
+        function renderFrame(frameIndex, ctx) {
+            const img = images[frameIndex];
+            if (!img || !img.complete || !ctx) return;
+            
+            // Die Grösse wird jetzt relativ zur CSS-Grösse des Canvas berechnet
+            const canvasEl = ctx.canvas;
+            const cssWidth = canvasEl.clientWidth;
+            const cssHeight = canvasEl.clientHeight;
+
+            const canvasAspect = cssWidth / cssHeight;
+            const imageAspect = img.width / img.height;
+            let drawWidth, drawHeight, offsetX, offsetY;
+
+            // 'Contain' Logik: Stellt sicher, dass das ganze Bild sichtbar ist
+            if (canvasAspect > imageAspect) {
+                // Canvas ist breiter als das Bild, Höhe ist limitierend
+                drawHeight = cssHeight;
+                drawWidth = drawHeight * imageAspect;
+            } else {
+                // Canvas ist höher als das Bild, Breite ist limitierend
+                drawWidth = cssWidth;
+                drawHeight = drawWidth / imageaspect;
+            }
+
+            // Grösser skaliert und nach links verschoben
+            const scale = 1.30;
+            drawWidth *= scale;
+            drawHeight *= scale;
+            
+            offsetX = (cssWidth - drawWidth) / 2 - (cssWidth * 0.20); // Zentrieren und dann um 22% nach links verschieben
+            offsetY = (cssHeight - drawHeight) / 3;
+
+            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+        }
+
+        // Initial setup and resize handling
+        window.addEventListener('resize', () => {
+          // Verzögerung der Neuanpassung, um Layout-Thrashing bei der Größenänderung zu vermeiden
+          setTimeout(handleResize, 100);
+        });
+        
+        // Initiale Einrichtung
+        handleResize();
+        handleScroll();
     });
    </script>
    <script>

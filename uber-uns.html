@@ -58,40 +58,36 @@
     }
   </style>
   <style>
-    .icon-carousel_list-wrapper {
-      overflow: hidden;
-      width: 100%;
-      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    .werte_grid {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-column-gap: 2rem;
+      grid-row-gap: 3rem;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
     }
-    .icon-carousel_list {
-      display: flex;
-      list-style-type: none;
-      padding-left: 0;
-      margin: 0;
-      width: 200%;
-      animation: slide-infinite 20s linear infinite;
-    }
-    .icon-carousel_item {
-      flex: 1 0 12.5%;
+    .werte_item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      text-align: center;
     }
-    .icon-carousel_image {
-      height: 60px;
+    .werte_icon {
       width: 60px;
+      height: 60px;
       margin-bottom: 1.5rem;
-      object-fit: contain;
     }
-    @keyframes slide-infinite {
-      0% {
-        transform: translateX(0%);
+    .werte_item h3 {
+      margin-bottom: 0.5rem;
+    }
+    @media screen and (max-width: 991px) {
+      .werte_grid {
+        grid-template-columns: 1fr 1fr;
       }
-      100% {
-        transform: translateX(-50%);
+    }
+    @media screen and (max-width: 767px) {
+      .werte_grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -361,7 +357,7 @@ margin: 0rem !important;
           <section class="section_layout28">
             <div class="padding-global">
               <div class="container-large">
-                <div class="padding-section-large">
+                <div class="padding-section-large" style="padding-top: 2rem; padding-bottom: 5rem;">
                   <div class="layout28_component">
                     <div data-duration-in="400" data-duration-out="200" data-current="Tab 3" data-easing="ease" class="layout28_tabs w-tabs">
                       <div id="w-node-f0d63d03-46c8-8e62-753a-a4e0fdf6a291-26854b48" class="layout28_tabs-menu w-tab-menu">
@@ -399,7 +395,7 @@ margin: 0rem !important;
                           </a>
                         </div>
                         <div data-w-tab="Tab 2" class="w-tab-pane">
-                           <div class="layout28_image-wrapper"><img width="1397.5" sizes="100vw" alt="" src="images/2025_02_25_1950-kompr..jpg" loading="lazy" srcset="" class="layout28_image"></div>
+                          <div class="layout28_image-wrapper"><img width="1397.5" sizes="100vw" alt="" src="images/2025_02_25_1950-kompr..jpg" loading="lazy" srcset="" class="layout28_image"></div>
                         </div>
                         <div data-w-tab="Tab 3" class="w-tab-pane">
                           <div class="layout28_image-wrapper"><img loading="lazy" src="images/dave-UFnHt94r91w-unsplash.jpg" alt="" class="layout28_image"></div>
@@ -413,30 +409,33 @@ margin: 0rem !important;
           </section>
         </div>
       </header>
-      <section class="section_icon_carousel">
+      <section class="section_werte">
         <div class="padding-global">
           <div class="container-large">
-            <div class="padding-section-large" style="padding-top: 0rem;">
-              <div class="icon-carousel_component">
-                <div class="icon-carousel_list-wrapper">
-                  <ul class="icon-carousel_list">
-                    <li class="icon-carousel_item">
-                      <img src="images/vertrauen3.svg" alt="Vertrauen" class="icon-carousel_image">
-                      <h3 class="heading-style-h5">Vertrauen</h3>
-                    </li>
-                    <li class="icon-carousel_item">
-                      <img src="images/pro3.svg" alt="Professionalität" class="icon-carousel_image">
-                      <h3 class="heading-style-h5">Professionalität</h3>
-                    </li>
-                    <li class="icon-carousel_item">
-                      <img src="images/expertise3.svg" alt="Expertise" class="icon-carousel_image">
-                      <h3 class="heading-style-h5">Expertise</h3>
-                    </li>
-                    <li class="icon-carousel_item">
-                      <img src="images/effizienz3.svg" alt="Effizienz" class="icon-carousel_image">
-                      <h3 class="heading-style-h5">Effizienz</h3>
-                    </li>
-                  </ul>
+            <div style="text-align: center; margin-bottom: 3rem; padding-top: 3rem;">
+              <h2 class="heading-style-h2">Unsere Werte</h2>
+            </div>
+            <div class="padding-section-large" style="padding-top: 0rem; padding-bottom: 5rem;">
+              <div class="werte_grid">
+                <div class="werte_item">
+                  <img src="images/vertrauen3.svg" alt="Vertrauen" class="werte_icon">
+                  <h3 class="heading-style-h4">Vertrauen</h3>
+                  <p>Diskretion und Integrität sind die Basis jeder erfolgreichen Partnerschaft. Wir schaffen eine vertrauensvolle Grundlage für gemeinsame Erfolge.</p>
+                </div>
+                <div class="werte_item">
+                  <img src="images/pro3.svg" alt="Professionalität" class="werte_icon">
+                  <h3 class="heading-style-h4">Professionalität</h3>
+                  <p>Wir agieren mit höchster Sorgfalt, fundiertem Fachwissen und absoluter Zuverlässigkeit für erstklassige Ergebnisse.</p>
+                </div>
+                <div class="werte_item">
+                  <img src="images/expertise3.svg" alt="Expertise" class="werte_icon">
+                  <h3 class="heading-style-h4">Expertise</h3>
+                  <p>Mit langjähriger Erfahrung und tiefgreifender Marktkenntnis navigieren wir Sie sicher durch komplexe Vorhaben und schaffen nachhaltigen Wert.</p>
+                </div>
+                <div class="werte_item">
+                  <img src="images/effizienz3.svg" alt="Effizienz" class="werte_icon">
+                  <h3 class="heading-style-h4">Effizienz</h3>
+                  <p>Wir bündeln unsere Kompetenzen, um Ihre Ziele geradlinig und ressourcenschonend zu erreichen – mit proaktivem Handeln für den entscheidenden Vorsprung.</p>
                 </div>
               </div>
             </div>
