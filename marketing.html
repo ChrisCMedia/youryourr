@@ -451,7 +451,7 @@
     position: relative;
     width: 100%;
     /* Die Höhe bestimmt die "Scroll-Dauer" der Animation. */
-    height: 250vh; /* Deutlich reduziert, um Leerraum zu vermeiden */
+    height: 350vh; /* Erhöht für die zusätzliche Slide-Out-Animation */
   }
 
   .scroll-sequence-text-overlay {
@@ -474,7 +474,7 @@
   .slide-in-text-box {
       position: absolute;
       top: 50%;
-      right: 5%; /* Positionierung am rechten Rand */
+      right: 12%; /* Näher an die Bildsequenz gerückt */
       transform: translateY(-50%) translateX(120%); /* Startposition ausserhalb des Bildschirms */
       opacity: 0;
       visibility: hidden;
@@ -502,6 +502,63 @@
       margin-bottom: 0.5rem;
   }
   /* END: MacBook Scroll Animation Styling */
+
+  /* START: Print Grid Section Styling */
+  .print-section-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      /* Startposition ausserhalb des Bildschirms */
+      transform: translateX(100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease, visibility 0.8s;
+  }
+
+  .print-section-wrapper.is-visible {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+  }
+
+  .print-grid-container {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .print-mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      width: 100%;
+      max-width: 500px;
+  }
+
+  .print-mockup-item {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+  }
+
+  .print-mockup-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+  }
+
+  .print-text-container {
+      flex: 1;
+      padding-left: 2rem;
+  }
+  /* END: Print Grid Section Styling */
 
   </style>
   <script src="js/menu-fix.js" type="text/javascript"></script>
@@ -685,40 +742,6 @@
 
        <!-- END: New Stage & Navigation Services Section -->
 
-       <!-- START: Digital Excellence Showcase Section -->
-       <section class="section_digital_excellence animate-on-scroll" style="padding-top: 3rem; padding-bottom: 4rem; background-color: #ffffff;">
-         <div class="padding-global">
-           <div class="container-large">
-             <div class="text-align-center margin-bottom margin-large">
-               <h2 class="heading-style-h2 animate-slide-in-left delay-200" style="color: var(--base-color-brand--main); font-family: 'Playfair Display', serif;">Egal ob Digital oder Print, wir sind Ihr Partner.</h2>
-             </div>
-             
-             <div class="digital-print-showcase-grid">
-                <div class="digital-showcase-left">
-                    <img src="images/macbook.png" alt="Digitales Marketing Mockup auf Laptop" class="macbook-image animate-slide-in-left delay-400">
-                    <img src="images/iphone.png" alt="Digitales Marketing Mockup auf Smartphone" class="iphone-image animate-slide-in-left delay-800">
-                </div>
-                <div class="print-showcase-right-grid animate-slide-in-right animate-on-scroll">
-                    <div class="services-gallery-item">
-                      <img src="images/mockup_print1.jpg" alt="Printmedien Beispiel 1">
-                    </div>
-                    <div class="services-gallery-item">
-                      <img src="images/mockup_print2.jpg" alt="Printmedien Beispiel 2">
-                    </div>
-                    <div class="services-gallery-item">
-                      <img src="images/mockup_print3.jpg" alt="Printmedien Beispiel 3">
-                    </div>
-                    <div class="services-gallery-item">
-                      <img src="images/mockupprint33.png" alt="Printmedien Beispiel 4">
-                    </div>
-                </div>
-             </div>
-
-           </div>
-         </div>
-       </section>
-       <!-- END: Digital Excellence Showcase Section -->
-
        <!-- START: MacBook Scroll Animation Section -->
        <section class="section_scroll_sequence animate-on-scroll animate-slide-in-left">
         <div class="scroll-sequence-content">
@@ -731,13 +754,34 @@
                 </div>
               </div>
             </div>
-            <!-- CANVAS FOLGT DER ÜBERSCHRIFT -->
-            <canvas id="macbook-scroll-canvas" class="scroll-sequence-canvas"></canvas>
+            <!-- NEUER WRAPPER FÜR CANVAS UND TEXTBOX -->
+            <div id="scroll-animation-wrapper" style="width: 100%; flex-grow: 1; min-height: 0; position: relative; display: flex; flex-direction: column; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);">
+              <!-- CANVAS FOLGT DER ÜBERSCHRIFT -->
+              <canvas id="macbook-scroll-canvas" class="scroll-sequence-canvas"></canvas>
 
-            <!-- NEU: Textbox, die am Ende erscheint -->
-            <div id="landingpage-text-box" class="slide-in-text-box">
-              <h4>Professionelle Projektwebsites</h4>
-              <p>Wir erstellen für Sie mobiloptimierte, DSGVO-konforme Landingpages mit klarem Fokus auf Conversion – modern, informativ und nutzerfreundlich, um Ihr Projekt perfekt zu präsentieren.</p>
+              <!-- TEXTBOX WIEDERHERGESTELLT -->
+              <div id="landingpage-text-box" class="slide-in-text-box">
+                <h4>Professionelle Projektwebsites</h4>
+                <p>Wir erstellen für Sie mobiloptimierte, DSGVO-konforme Landingpages mit klarem Fokus auf Conversion – modern, informativ und nutzerfreundlich, um Ihr Projekt perfekt zu präsentieren.</p>
+              </div>
+            </div>
+
+            <!-- NEUER CONTAINER FÜR PRINT, DER EINGEBLENDET WIRD -->
+            <div id="print-section-wrapper" class="print-section-wrapper">
+                <div class="print-grid-container">
+                    <div class="print-mockup-grid">
+                        <div class="print-mockup-item"><img src="images/mockup_print1.jpg" alt="Print Mockup 1"></div>
+                        <div class="print-mockup-item"><img src="images/mockup_print2.jpg" alt="Print Mockup 2"></div>
+                        <div class="print-mockup-item"><img src="images/mockup_print3.jpg" alt="Print Mockup 3"></div>
+                        <div class="print-mockup-item"><img src="images/mockupprint33.png" alt="Print Mockup 4"></div>
+                    </div>
+                </div>
+                <div class="print-text-container">
+                    <div class="slide-in-text-box is-visible"> <!-- Re-use styling -->
+                        <h4>Hochwertige Printmedien</h4>
+                        <p>Von klassischen Exposés über Broschüren bis hin zu Bauschildern – wir gestalten überzeugende Printmaterialien, die die Wertigkeit Ihres Projekts unterstreichen und im Gedächtnis bleiben.</p>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
@@ -928,6 +972,10 @@
       document.addEventListener('DOMContentLoaded', () => {
         const canvas = document.getElementById('macbook-scroll-canvas');
         if (!canvas) return;
+        const scrollContent = document.querySelector('.scroll-sequence-content');
+        const animationWrapper = document.getElementById('scroll-animation-wrapper');
+        const textBox = document.getElementById('landingpage-text-box');
+        const printWrapper = document.getElementById('print-section-wrapper');
 
         // Helfersfunktion, um die Auflösung des Canvas an hochauflösende Bildschirme anzupassen
         function setupCanvas(canvas) {
@@ -941,7 +989,6 @@
         }
 
         const context = canvas.getContext('2d');
-        const scrollContent = document.querySelector('.scroll-sequence-content');
         
         const frameCount = 59;
         const imageFilePrefix = 'images/macbook-sequence/';
@@ -977,7 +1024,6 @@
         function handleResize() {
           // Canvas-Auflösung neu einstellen und Kontext neu abrufen
           const ctx = setupCanvas(canvas);
-          // Wichtig: Da der Kontext neu erstellt wurde, müssen wir ihn für die renderFrame-Funktion verfügbar machen.
           // In diesem Fall ist es einfacher, renderFrame direkt mit dem neuen Kontext aufzurufen.
           renderFrame(getFrameIndexForScroll(), ctx); 
         }
@@ -1002,18 +1048,56 @@
 
         function handleScroll() {
           requestAnimationFrame(() => {
-            const frameIndex = getFrameIndexForScroll();
-            renderFrame(frameIndex, context);
+            const scrollFraction = getScrollFraction();
+            
+            const animationSplitPoint = 0.7; 
 
-            // Logik zum Einblenden der Textbox wiederhergestellt
-            const textBox = document.getElementById('landingpage-text-box');
-            if (textBox) {
-                const scrollFraction = getScrollFraction();
-                if (scrollFraction > 0.5) { // Trigger bei 50% des Scroll-Wegs (vorher 0.9)
-                    textBox.classList.add('is-visible');
+            if (scrollFraction <= animationSplitPoint) {
+              // PHASE 1: BILDSEQUENZ
+              const sequenceFraction = scrollFraction / animationSplitPoint;
+              const frameIndex = Math.min(frameCount - 1, Math.floor(sequenceFraction * frameCount));
+              renderFrame(frameIndex, context);
+
+              if (textBox) {
+                if (sequenceFraction > 0.8) {
+                  textBox.classList.add('is-visible');
                 } else {
-                    textBox.classList.remove('is-visible');
+                  textBox.classList.remove('is-visible');
                 }
+              }
+              
+              // Sicherstellen, dass die Slide-Out-Transformation zurückgesetzt ist
+              if (animationWrapper) {
+                animationWrapper.style.transform = 'translateX(0)';
+              }
+              // Print-Sektion ausblenden
+              if(printWrapper) {
+                printWrapper.classList.remove('is-visible');
+              }
+
+            } else {
+              // PHASE 2: SLIDE-OUT MacBook/Text & SLIDE-IN Print
+              renderFrame(frameCount - 1, context);
+              if (textBox) {
+                textBox.classList.add('is-visible');
+              }
+
+              const slideFraction = (scrollFraction - animationSplitPoint) / (1 - animationSplitPoint);
+              
+              // MacBook und Textbox hinausschieben
+              const translateX = -slideFraction * 110; 
+              if (animationWrapper) {
+                animationWrapper.style.transform = `translateX(${translateX}%)`;
+              }
+
+              // Print-Mockups hineinschieben
+              if (printWrapper) {
+                if (slideFraction > 0.1) {
+                    printWrapper.classList.add('is-visible');
+                } else {
+                    printWrapper.classList.remove('is-visible');
+                }
+              }
             }
           });
         }
