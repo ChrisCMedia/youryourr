@@ -22,6 +22,9 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
   <style>
+  html {
+    scroll-behavior: smooth;
+  }
   * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -304,27 +307,38 @@
   }
   /* END: Force DM Sans for Strategien list items */
 
-  /* START: Slide in from Left Animation */
-    .animate-slide-in-left {
-      opacity: 0;
-      transform: translateX(-80px); /* Slightly increased initial offset */
-      transition: opacity 0.8s ease-out, transform 1.2s ease-out; /* Smoother and slightly longer transform */
-    }
-    .animate-slide-in-right {
-      opacity: 0;
-      transform: translateX(180px); /* Slightly increased initial offset */
-      transition: opacity 0.8s ease-out, transform 1.2s ease-out; /* Smoother and slightly longer transform */
-    }
-    
-  .animate-on-scroll.is-visible .animate-slide-in-left { /* Adjusted selector based on how animation.js works */
-    opacity: 1;
-    transform: translateX(0);
+  /* START: Generic On-Scroll Animations */
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-scale-in {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
   }
-  .animate-on-scroll.is-visible .animate-slide-in-right {
+
+  .animate-slide-up { transform: translateY(30px); }
+  .animate-slide-in-left { transform: translateX(-30px); }
+  .animate-slide-in-right { transform: translateX(30px); }
+  .animate-scale-in { transform: scale(0.95); }
+
+  /* Active states triggered by JS */
+  .animate-fade-in.animate,
+  .animate-slide-up.animate,
+  .animate-slide-in-left.animate,
+  .animate-slide-in-right.animate,
+  .animate-scale-in.animate {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0) translateX(0) scale(1);
   }
-  /* END: Slide in from Left Animation */
+  
+  /* Delays */
+  .delay-200 { transition-delay: 0.2s !important; }
+  .delay-400 { transition-delay: 0.4s !important; }
+  .delay-600 { transition-delay: 0.6s !important; }
+  .delay-800 { transition-delay: 0.8s !important; }
+  /* END: Generic On-Scroll Animations */
 
   /* FIX für kombinierte Animationsklassen auf einem Element */
   .animate-on-scroll.animate-slide-in-left.is-visible {
@@ -485,7 +499,7 @@
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-      max-width: 380px;
+      max-width: 460px;
       color: #01253B;
       border: 1px solid rgba(255, 255, 255, 0.18);
   }
@@ -527,22 +541,21 @@
   }
 
   .print-grid-container {
-      flex: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex: 1; /* Erlaubt dem Raster, den verfügbaren Platz auszufüllen */
+      min-width: 0; /* Wichtiger Flexbox-Fix */
   }
 
   .print-mockup-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-rows: repeat(2, 1fr); /* Definiert zwei gleich hohe Zeilen */
+      gap: 1.5rem;
       width: 100%;
-      max-width: 500px;
+      height: 70vh; /* Responsive Höhe, um Überlappung zu verhindern */
+      max-height: 650px; /* Obergrenze für sehr hohe Bildschirme */
   }
 
   .print-mockup-item {
-      aspect-ratio: 1 / 1;
       overflow: hidden;
   }
 
@@ -555,10 +568,100 @@
   }
 
   .print-text-container {
-      flex: 1;
-      padding-left: 2rem;
+      flex-shrink: 0; /* Verhindert, dass die Textbox schrumpft */
+      width: 500px; /* Gibt der Textbox eine feste Breite */
   }
   /* END: Print Grid Section Styling */
+
+  /* START: Horizontal Scroll Section Styling */
+  .horizontal-scroll-section {
+    /* Die Höhe bestimmt die "Scroll-Dauer" der Animation. 
+       Erhöht, um Platz für beide Phasen zu schaffen. */
+    position: relative;
+    height: 500vh; 
+  }
+
+  .sticky-wrapper {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .horizontal-track {
+    position: relative;
+    height: 100%;
+    width: 200%; /* 2 Slides nebeneinander */
+    display: flex;
+    will-change: transform;
+  }
+
+  .horizontal-slide {
+    width: 50%; /* 100% / 2 Slides */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative; /* Wichtig für die Positionierung der Textbox */
+  }
+
+  /* Veraltete text-slide Regel entfernen */
+  
+  #scroll-animation-wrapper {
+      max-width: 90vw; /* Nutzen der Viewport-Breite für bessere Skalierung */
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem; /* Kleinerer, definierter Abstand */
+      position: relative;
+      transform: translateX(-3%); /* Rückt die gesamte Gruppe leicht nach links */
+  }
+
+  #macbook-scroll-canvas {
+    flex: 3; /* MacBook nimmt 3/4 des verfügbaren Raums ein */
+    height: 90%; /* Nimmt fast die gesamte Höhe ein, um größer zu wirken */
+    min-width: 0; /* Wichtig für Flexbox-Verhalten mit Canvas */
+    width: auto;
+  }
+  
+  .media-slide #print-section-wrapper {
+      width: 90vw; /* Macht die gesamte Komposition breit */
+      max-width: 1400px; /* Setzt eine Obergrenze */
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5rem; /* Definiert den Abstand zwischen Bildern und Text */
+      padding-top: 10rem; /* Vergrößert den Abstand zur Überschrift */
+  }
+  
+  #print-section-wrapper {
+    /* Da es jetzt eine eigene Slide ist, sind einige alte Stile nicht mehr nötig. */
+    position: relative;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    padding: 0;
+  }
+
+  #landingpage-text-box {
+    flex: 1; /* Textbox nimmt 1/4 des Raums ein */
+    max-width: 450px; /* Begrenzung für gute Lesbarkeit */
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  /* END: Horizontal Scroll Section Styling */
 
   </style>
   <script src="js/menu-fix.js" type="text/javascript"></script>
@@ -691,7 +794,7 @@
                  <!-- Central divider -->
                  <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background-color: #e8e8e8; transform: translateX(-50%);"></div>
 
-                 <div class="text-column animate-slide-up delay-200" style="position: relative; padding-right: 40px;">
+                 <div class="text-column animate-slide-in-left delay-200" style="position: relative; padding-right: 40px;">
                    <!-- Optional: Decorative quote mark -->
                    <!-- <div style="position: absolute; top: -20px; left: 0px; color: #c8a45c; opacity: 0.2; font-size: 90px; font-family: serif; line-height: 1;">"</div> -->
                    <div class="margin-bottom margin-small" style="position: relative; z-index: 2;">
@@ -699,7 +802,7 @@
                      <p class="text-size-medium">Unser Team vereint <strong>Immobilien-Know-how</strong> mit <strong>kreativem Markenverständnis</strong>. Ziel: <span style="color: #88563C;"><strong>messbare Ergebnisse</strong></span> und maximale Aufmerksamkeit für Ihr Projekt.</p>
                    </div>
                  </div>
-                 <div class="text-column animate-slide-up delay-400" style="position: relative; padding-left: 40px;">
+                 <div class="text-column animate-slide-in-right delay-400" style="position: relative; padding-left: 40px;">
                    <div class="margin-bottom margin-small">
                      <p class="text-size-medium">Vom <strong>Naming und Branding</strong> über <strong>Projekt-Websites</strong> und <strong>Visualisierungen</strong> bis hin zu gezielter <strong>Leadgenerierung</strong> – wir betreuen Ihr Marketing <span style="color: #88563C;"><strong>ganzheitlich und performanceorientiert</strong></span>.</p>
                      <p class="text-size-medium">Vertrauen Sie auf unsere <strong>langjährige Erfahrung</strong> in der Immobilienvermarktung und ein starkes Netzwerk an <strong>Kreativ- und Medienpartnern</strong>.</p>
@@ -742,51 +845,53 @@
 
        <!-- END: New Stage & Navigation Services Section -->
 
-       <!-- START: MacBook Scroll Animation Section -->
-       <section class="section_scroll_sequence animate-on-scroll animate-slide-in-left">
-        <div class="scroll-sequence-content">
-          <div class="scroll-sequence-sticky-container">
-            <!-- ÜBERSCHRIFT IST JETZT INNERHALB DES STICKY-CONTAINERS -->
-            <div class="padding-global" style="padding-top: 0rem; padding-bottom: 0rem; flex-shrink: 0;">
+       <!-- START: HORIZONTAL SCROLL SECTION -->
+       <section id="horizontal-scroll-section" class="horizontal-scroll-section">
+         <div class="sticky-wrapper">
+            <!-- HEADLINE MOVED HERE AND POSITIONED ABSOLUTELY -->
+            <div class="padding-global" style="padding-top: 4rem; padding-bottom: 2rem; position: absolute; top: 0; left: 0; width: 100%; z-index: 10;">
               <div class="container-large">
-                <div class="text-align-center margin-bottom-medium">
+                <div class="text-align-center">
                   <h2 class="heading-style-h2" style="color: var(--base-color-brand--main); font-family: 'Playfair Display', serif;">Eine neue Dimension der Präsentation</h2>
                 </div>
               </div>
             </div>
-            <!-- NEUER WRAPPER FÜR CANVAS UND TEXTBOX -->
-            <div id="scroll-animation-wrapper" style="width: 100%; flex-grow: 1; min-height: 0; position: relative; display: flex; flex-direction: column; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);">
-              <!-- CANVAS FOLGT DER ÜBERSCHRIFT -->
-              <canvas id="macbook-scroll-canvas" class="scroll-sequence-canvas"></canvas>
 
-              <!-- TEXTBOX WIEDERHERGESTELLT -->
-              <div id="landingpage-text-box" class="slide-in-text-box">
-                <h4>Professionelle Projektwebsites</h4>
-                <p>Wir erstellen für Sie mobiloptimierte, DSGVO-konforme Landingpages mit klarem Fokus auf Conversion – modern, informativ und nutzerfreundlich, um Ihr Projekt perfekt zu präsentieren.</p>
-              </div>
-            </div>
+           <div class="horizontal-track">
+             <!-- Slide 1: MacBook Animation (was Slide 2) -->
+             <div class="horizontal-slide media-slide">
+               <div id="scroll-animation-wrapper" style="position: relative; width: 100%; height: 100%;">
+                 <canvas id="macbook-scroll-canvas" class="scroll-sequence-canvas"></canvas>
+                 <div id="landingpage-text-box" class="slide-in-text-box">
+                   <h4>Professionelle Projektwebsites</h4>
+                   <p>In enger Zusammenarbeit mit unseren erfahrenen Web-Entwicklern und UI/UX-Designern konzipieren wir für Sie mehr als nur eine Website: Wir schaffen digitale Erlebniswelten. Jede Landingpage ist mobiloptimiert, DSGVO-konform und strategisch auf Conversion ausgerichtet, um Ihr Projekt modern, informativ und maximal nutzerfreundlich zu präsentieren.</p>
+                 </div>
+               </div>
+             </div>
 
-            <!-- NEUER CONTAINER FÜR PRINT, DER EINGEBLENDET WIRD -->
-            <div id="print-section-wrapper" class="print-section-wrapper">
-                <div class="print-grid-container">
-                    <div class="print-mockup-grid">
-                        <div class="print-mockup-item"><img src="images/mockup_print1.jpg" alt="Print Mockup 1"></div>
-                        <div class="print-mockup-item"><img src="images/mockup_print2.jpg" alt="Print Mockup 2"></div>
-                        <div class="print-mockup-item"><img src="images/mockup_print3.jpg" alt="Print Mockup 3"></div>
-                        <div class="print-mockup-item"><img src="images/mockupprint33.png" alt="Print Mockup 4"></div>
-                    </div>
-                </div>
-                <div class="print-text-container">
-                    <div class="slide-in-text-box is-visible"> <!-- Re-use styling -->
-                        <h4>Hochwertige Printmedien</h4>
-                        <p>Von klassischen Exposés über Broschüren bis hin zu Bauschildern – wir gestalten überzeugende Printmaterialien, die die Wertigkeit Ihres Projekts unterstreichen und im Gedächtnis bleiben.</p>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
+             <!-- Slide 2: Print Media (was Slide 3) -->
+             <div class="horizontal-slide media-slide">
+               <div id="print-section-wrapper" class="print-section-wrapper">
+                 <div class="print-grid-container">
+                   <div class="print-mockup-grid">
+                     <div class="print-mockup-item"><img src="images/mockup_print1.jpg" alt="Print Mockup 1"></div>
+                     <div class="print-mockup-item"><img src="images/mockup_print2.jpg" alt="Print Mockup 2"></div>
+                     <div class="print-mockup-item"><img src="images/mockup_print3.jpg" alt="Print Mockup 3"></div>
+                     <div class="print-mockup-item"><img src="images/mockupprint33.png" alt="Print Mockup 4"></div>
+                   </div>
+                 </div>
+                 <div class="print-text-container">
+                   <div class="slide-in-text-box is-visible">
+                     <h4>Hochwertige Printmedien</h4>
+                     <p>Gedrucktes hinterlässt Eindruck. Von klassischen, buchgebundenen Exposés über hochwertige Broschüren bis hin zu großformatigen Bauschildern und Anzeigen – unser Kreativteam gestaltet überzeugende Printmaterialien, die die Wertigkeit und Exklusivität Ihres Projekts physisch erlebbar machen und nachhaltig im Gedächtnis bleiben.</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
        </section>
-       <!-- END: MacBook Scroll Animation Section -->
+       <!-- END: HORIZONTAL SCROLL SECTION -->
 
        <!-- START: Why Us Icon List Section -->
        <section class="section_marketing_why_us animate-fade-in animate-on-scroll">
@@ -900,7 +1005,8 @@
 
       servicesData.forEach((service, index) => {
         const card = document.createElement('div');
-        card.className = 'service-card';
+        card.className = 'service-card animate-slide-up';
+        card.style.transitionDelay = `${index * 100}ms`;
 
         const iconWrapper = document.createElement('div');
         iconWrapper.className = 'service-card_icon-wrapper';
@@ -970,199 +1076,100 @@
    <script>
       // SCRIPT FOR MACBOOK SCROLL ANIMATION
       document.addEventListener('DOMContentLoaded', () => {
+        const horizontalSection = document.getElementById('horizontal-scroll-section');
+        const track = document.querySelector('.horizontal-track');
         const canvas = document.getElementById('macbook-scroll-canvas');
-        if (!canvas) return;
-        const scrollContent = document.querySelector('.scroll-sequence-content');
-        const animationWrapper = document.getElementById('scroll-animation-wrapper');
-        const textBox = document.getElementById('landingpage-text-box');
-        const printWrapper = document.getElementById('print-section-wrapper');
 
-        // Helfersfunktion, um die Auflösung des Canvas an hochauflösende Bildschirme anzupassen
-        function setupCanvas(canvas) {
-            const dpr = window.devicePixelRatio || 1;
-            const rect = canvas.getBoundingClientRect();
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            const ctx = canvas.getContext('2d');
-            ctx.scale(dpr, dpr);
-            return ctx;
-        }
+        if (!horizontalSection || !track || !canvas) return;
 
+        // Setup für die Canvas-Animation (unverändert)
         const context = canvas.getContext('2d');
-        
         const frameCount = 59;
         const imageFilePrefix = 'images/macbook-sequence/';
-        const imageFileSuffix = '.png';
-
-        const currentFrame = index => (
-          `${imageFilePrefix}${String(index).padStart(3, '0')}${imageFileSuffix}`
-        );
-
         const images = [];
         const imagePromises = [];
 
+        function setupCanvas(canvas) {
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          const ctx = canvas.getContext('2d');
+          ctx.scale(dpr, dpr);
+          return ctx;
+        }
+
+        const currentFrame = index => `${imageFilePrefix}${String(index).padStart(3, '0')}.png`;
+
         for (let i = 0; i < frameCount; i++) {
           const img = new Image();
-          images.push(img);
-          const promise = new Promise(resolve => {
-            img.onload = resolve;
-          });
-          imagePromises.push(promise);
           img.src = currentFrame(i);
+          images.push(img);
+          imagePromises.push(new Promise(resolve => img.onload = resolve));
         }
 
-        // Text Overlays - ALLES ENTFERNT
-        const textOverlays = [];
+        const renderFrame = (index, ctx) => {
+          if (images[index]) {
+            const dpr = window.devicePixelRatio || 1;
+            const canvasWidth = ctx.canvas.width / dpr;
+            const canvasHeight = ctx.canvas.height / dpr;
 
-        Promise.all(imagePromises).then(() => {
-          // Initial render
-          renderFrame(0, context);
+            const hRatio = canvasWidth / images[index].width;
+            const vRatio = canvasHeight / images[index].height;
+            const ratio = Math.min(hRatio, vRatio); // GEÄNDERT: von max auf min für "contain"-Verhalten
 
-          window.addEventListener('scroll', handleScroll);
-        });
-        
-        function handleResize() {
-          // Canvas-Auflösung neu einstellen und Kontext neu abrufen
-          const ctx = setupCanvas(canvas);
-          // In diesem Fall ist es einfacher, renderFrame direkt mit dem neuen Kontext aufzurufen.
-          renderFrame(getFrameIndexForScroll(), ctx); 
-        }
-
-        function getFrameIndexForScroll() {
-            const scrollFraction = getScrollFraction();
-            return Math.min(
-              frameCount - 1,
-              Math.floor(scrollFraction * frameCount)
-            );
-        }
-
-        // Helfersfunktion, um den aktuellen Scroll-Fortschritt (0 bis 1) zu erhalten
-        function getScrollFraction() {
-            const rect = scrollContent.getBoundingClientRect();
-            const scrollTop = -rect.top;
-            const scrollableHeight = scrollContent.scrollHeight - window.innerHeight;
-            if (scrollableHeight <= 0) return 0;
-            let scrollFraction = scrollTop / scrollableHeight;
-            return Math.min(1, Math.max(0, scrollFraction));
-        }
-
-        function handleScroll() {
-          requestAnimationFrame(() => {
-            const scrollFraction = getScrollFraction();
+            const centerShift_x = (canvasWidth - images[index].width * ratio) / 2;
+            const centerShift_y = (canvasHeight - images[index].height * ratio) / 2;
             
-            const animationSplitPoint = 0.7; 
-
-            if (scrollFraction <= animationSplitPoint) {
-              // PHASE 1: BILDSEQUENZ
-              const sequenceFraction = scrollFraction / animationSplitPoint;
-              const frameIndex = Math.min(frameCount - 1, Math.floor(sequenceFraction * frameCount));
-              renderFrame(frameIndex, context);
-
-              if (textBox) {
-                if (sequenceFraction > 0.8) {
-                  textBox.classList.add('is-visible');
-                } else {
-                  textBox.classList.remove('is-visible');
-                }
-              }
-              
-              // Sicherstellen, dass die Slide-Out-Transformation zurückgesetzt ist
-              if (animationWrapper) {
-                animationWrapper.style.transform = 'translateX(0)';
-              }
-              // Print-Sektion ausblenden
-              if(printWrapper) {
-                printWrapper.classList.remove('is-visible');
-              }
-
-            } else {
-              // PHASE 2: SLIDE-OUT MacBook/Text & SLIDE-IN Print
-              renderFrame(frameCount - 1, context);
-              if (textBox) {
-                textBox.classList.add('is-visible');
-              }
-
-              const slideFraction = (scrollFraction - animationSplitPoint) / (1 - animationSplitPoint);
-              
-              // MacBook und Textbox hinausschieben
-              const translateX = -slideFraction * 110; 
-              if (animationWrapper) {
-                animationWrapper.style.transform = `translateX(${translateX}%)`;
-              }
-
-              // Print-Mockups hineinschieben
-              if (printWrapper) {
-                if (slideFraction > 0.1) {
-                    printWrapper.classList.add('is-visible');
-                } else {
-                    printWrapper.classList.remove('is-visible');
-                }
-              }
-            }
-          });
-        }
-        
-        function renderFrame(frameIndex, ctx) {
-            const img = images[frameIndex];
-            if (!img || !img.complete || !ctx) return;
-            
-            // Die Grösse wird jetzt relativ zur CSS-Grösse des Canvas berechnet
-            const canvasEl = ctx.canvas;
-            const cssWidth = canvasEl.clientWidth;
-            const cssHeight = canvasEl.clientHeight;
-
-            const canvasAspect = cssWidth / cssHeight;
-            const imageAspect = img.width / img.height;
-            let drawWidth, drawHeight, offsetX, offsetY;
-
-            // 'Contain' Logik: Stellt sicher, dass das ganze Bild sichtbar ist
-            if (canvasAspect > imageAspect) {
-                // Canvas ist breiter als das Bild, Höhe ist limitierend
-                drawHeight = cssHeight;
-                drawWidth = drawHeight * imageAspect;
-            } else {
-                // Canvas ist höher als das Bild, Breite ist limitierend
-                drawWidth = cssWidth;
-                drawHeight = drawWidth / imageaspect;
-            }
-
-            // Grösser skaliert und nach links verschoben
-            const scale = 1.30;
-            drawWidth *= scale;
-            drawHeight *= scale;
-            
-            offsetX = (cssWidth - drawWidth) / 2 - (cssWidth * 0.20); // Zentrieren und dann um 22% nach links verschieben
-            offsetY = (cssHeight - drawHeight) / 3;
-
-            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-        }
-
-        // Initial setup and resize handling
-        window.addEventListener('resize', () => {
-          // Verzögerung der Neuanpassung, um Layout-Thrashing bei der Größenänderung zu vermeiden
-          setTimeout(handleResize, 100);
-        });
-        
-        // Initiale Einrichtung
-        handleResize();
-        handleScroll();
-    });
-   </script>
-   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.drawImage(images[index], 0, 0, images[index].width, images[index].height, centerShift_x, centerShift_y, images[index].width * ratio, images[index].height * ratio);
           }
+        };
+        
+        Promise.all(imagePromises).then(() => {
+            const ctx = setupCanvas(canvas);
+            renderFrame(0, ctx); 
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            window.addEventListener('resize', () => {
+                const newCtx = setupCanvas(canvas);
+                handleScroll(newCtx); // Pass new context to handler
+            }, { passive: true });
         });
-      }, { threshold: 0.1 });
-  
-      document.querySelectorAll('.animate-on-scroll').forEach(elem => {
-        observer.observe(elem);
+        
+        function handleScroll(ctxOrEvent) {
+            const ctx = (ctxOrEvent && ctxOrEvent.constructor.name === "CanvasRenderingContext2D") ? ctxOrEvent : context;
+
+            requestAnimationFrame(() => {
+                const sectionRect = horizontalSection.getBoundingClientRect();
+                const scrollableHeight = horizontalSection.offsetHeight - window.innerHeight;
+                const scrollAmount = -sectionRect.top;
+
+                if (scrollAmount >= 0 && scrollAmount <= scrollableHeight) {
+                    const progress = scrollAmount / scrollableHeight;
+                    const splitPoint = 0.45; // 45% für Frame-Animation, 55% für Horizontal-Scroll
+
+                    if (progress <= splitPoint) {
+                        // Phase 1: Frame-Animation
+                        const canvasProgress = progress / splitPoint;
+                        const frameIndex = Math.min(frameCount - 1, Math.floor(canvasProgress * frameCount));
+                        renderFrame(frameIndex, ctx);
+                        // Sicherstellen, dass der Track am Anfang bleibt
+                        track.style.transform = `translateX(0%)`;
+                    } else {
+                        // Phase 2: Horizontaler Scroll
+                        // Letzten Frame der Animation beibehalten
+                        renderFrame(frameCount - 1, ctx);
+                        
+                        const trackProgress = (progress - splitPoint) / (1 - splitPoint);
+                        const trackTranslateX = -trackProgress * 50; // Verschiebt um 50% (eine Folie)
+                        track.style.transform = `translateX(${trackTranslateX}%)`;
+                    }
+                }
+            });
+        }
       });
-    });
-  </script>
- </body>
- </html>
+      /* END: MacBook Scroll Animation */
+
+    </script>
+  </body>
+</html>

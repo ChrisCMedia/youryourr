@@ -7986,9 +7986,13 @@ body::-webkit-scrollbar {
   }
 
 .footer2_link:hover,
+.footer2_link.w--current,
 .footer2_link-list a:hover,
+.footer2_link-list a.w--current,
 .footer2_legal-link:hover,
-.footer2_legal-list a:hover {
+.footer2_legal-link.w--current,
+.footer2_legal-list a:hover,
+.footer2_legal-list a.w--current {
   color: var(--base-color-brand--sec-main) !important;
   transition: color 0.2s;
 }
